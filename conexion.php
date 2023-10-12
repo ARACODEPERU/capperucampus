@@ -1,6 +1,6 @@
 <?php
     /*LOCAL*/ 
-    $conexion = new mysqli("localhost","YisusWeb","*Volver42","yisuscampus"); 
+    $conexion = new mysqli("localhost","root","","base-app"); 
     //Unidad local - usuario - password - nombre de base de datos
 ?>
 

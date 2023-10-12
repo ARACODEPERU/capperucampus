@@ -78,9 +78,9 @@
                             <div class="row">
                                 <?php
                                     $id = $_SESSION ['ID'];
-                                    $query = "SELECT * FROM certificado ce
-                                            INNER JOIN courses c ON ce.idCourses = c.IDCourses
-                                            WHERE idUsers='$id' ";
+                                    $query = "SELECT * FROM aca_certificates ce
+                                            INNER JOIN aca_courses c ON ce.course_id = c.id
+                                            WHERE ce.student_id='$id' ";
                                     $resultado = $conexion->query($query);
                                     while($row = $resultado->fetch_assoc()){ 
                                 ?>

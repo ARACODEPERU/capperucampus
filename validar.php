@@ -8,18 +8,18 @@ $contrasena=$_POST['userPass'];
 
 include ("conexion.php");
 
-$proceso=$conexion->query("SELECT * FROM users WHERE Email='$usuario' AND DNI='$contrasena' AND Estado = 'Activo'" );
+$proceso=$conexion->query("SELECT * FROM users JOIN people ON users.person_id = people.id WHERE users.Email='$usuario' AND people.number='$contrasena'" );
 
 if (mysqli_num_rows($proceso) == 1){
 
 	while($resultado = mysqli_fetch_array($proceso)){
 
 		session_start();
-		$_SESSION['ID'] = $resultado['ID'];
-		$_SESSION['Estado'] = $resultado['Activo'];
-		$_SESSION['Nivel'] = $resultado['Nivel'];
-		$_SESSION['DNI'] = $resultado['DNI'];
-		$_SESSION['Email'] = $resultado['Email'];
+		$_SESSION['ID'] = 1; //$resultado['ID'];
+		$_SESSION['Estado'] = true; //= $resultado['Activo'];
+		$_SESSION['Nivel'] = 'Alumno'; //$resultado['Nivel'];
+		$_SESSION['DNI'] = '12345678'; //$resultado['DNI'];
+		$_SESSION['Email'] = 'asd@asdas.com';//$resultado['Email'];
 		
 
 		if ($_SESSION['Nivel'] == 'Alumno' ||

@@ -1,8 +1,8 @@
 <?php
 
 $servidor="mysql:dbname=yisuscampus;host=127.0.0.1";
-$usuario="YisusWeb";
-$password="*Volver42";
+$usuario="root";
+$password="";
 
 try{
     $pdo= new PDO($servidor,$usuario,$password);

@@ -70,7 +70,7 @@
                             <b> Clase </b> del Tema || 
                             <?php 
                         $id = $_REQUEST ['id'];
-                              $query = "SELECT * FROM themes WHERE IDThemes='$id' ";
+                              $query = "SELECT * FROM aca_themes WHERE id ='$id' ";
                               $resultado = $conexion->query($query);
                               while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -82,9 +82,9 @@
                 <div class="row">
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM themes t
-                        INNER JOIN modules m ON t.idModules = m.IDModules
-                        WHERE IDThemes='$id' ";
+                        $query = "SELECT * FROM aca_themes t
+                        INNER JOIN aca_modules m ON t.module_id = m.id
+                        WHERE t.id ='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 
