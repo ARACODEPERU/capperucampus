@@ -265,7 +265,7 @@
                                         <i class="fa fa-book"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM courses";
+                                        $sql = "SELECT COUNT(*) total FROM aca_courses";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -288,7 +288,7 @@
                                         <i class="fa fa-tags"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM modules";
+                                        $sql = "SELECT COUNT(*) total FROM aca_modules";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -311,7 +311,7 @@
                                         <i class="fa fa-tags"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM themes";
+                                        $sql = "SELECT COUNT(*) total FROM aca_themes";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -380,7 +380,7 @@
                                         <i class="fa fa-graduation-cap"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM certificado";
+                                        $sql = "SELECT COUNT(*) total FROM aca_certificates";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -415,9 +415,9 @@
                         <div class="row">
                             <?php
                                 $id = $_SESSION ['ID'];
-                                $query = "SELECT * FROM certificado ce
-                                        INNER JOIN courses c ON ce.idCourses = c.IDCourses
-                                        WHERE idUsers='$id' ";
+                                $query = "SELECT * FROM aca_certificates ce
+                                        INNER JOIN aca_courses c ON ce.course_id = c.id
+                                        WHERE c.id='$id' ";
                                 $resultado = $conexion->query($query);
                                 while($row = $resultado->fetch_assoc()){ 
                             ?>
@@ -441,7 +441,7 @@
     <!-- Modal -->
     <?php 
         $id = $_SESSION ['ID'];                                
-        $consulta = "SELECT * FROM users WHERE ID='$id'";
+        $consulta = "SELECT * FROM users WHERE id='$id'";
         $resultado = $conexion->query($consulta);
         while($alumno = $resultado->fetch_assoc()){
     ?>
