@@ -17,11 +17,11 @@ if (mysqli_num_rows($proceso) == 1){
 	while($resultado = mysqli_fetch_array($proceso)){
 
 		session_start();
-		$_SESSION['ID'] = 1; //$resultado['ID'];
+		$_SESSION['ID'] = $resultado['id'];
 		$_SESSION['Estado'] = true; //= $resultado['Activo'];
 		$_SESSION['Nivel'] = 'Alumno'; //$resultado['Nivel'];
 		$_SESSION['DNI'] = $resultado['number'];
-		$_SESSION['Email'] = 'admin@asdas.com';//$resultado['email'];
+		$_SESSION['Email'] = $resultado['email'];
 		
 
 		if ($_SESSION['Nivel'] == 'Alumno' ||
@@ -41,7 +41,7 @@ if (mysqli_num_rows($proceso) == 1){
 	
 
 } else{
-    header("Location: ".$usuario."index.php");
+    header("Location: index.php");
 }
 
 
