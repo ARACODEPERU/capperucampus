@@ -8,7 +8,9 @@ $contrasena=$_POST['userPass'];
 
 include ("conexion.php");
 
-$proceso=$conexion->query("SELECT * FROM users JOIN people ON users.person_id = people.id WHERE users.Email='$usuario' AND people.number='$contrasena'" );
+$proceso=$conexion->query("SELECT * FROM users JOIN people ON users.person_id = people.id WHERE users.email='$usuario' AND people.number='$contrasena'" );
+
+
 
 if (mysqli_num_rows($proceso) == 1){
 
@@ -18,8 +20,8 @@ if (mysqli_num_rows($proceso) == 1){
 		$_SESSION['ID'] = 1; //$resultado['ID'];
 		$_SESSION['Estado'] = true; //= $resultado['Activo'];
 		$_SESSION['Nivel'] = 'Alumno'; //$resultado['Nivel'];
-		$_SESSION['DNI'] = '12345678'; //$resultado['DNI'];
-		$_SESSION['Email'] = 'asd@asdas.com';//$resultado['Email'];
+		$_SESSION['DNI'] = $resultado['number'];
+		$_SESSION['Email'] = 'admin@asdas.com';//$resultado['email'];
 		
 
 		if ($_SESSION['Nivel'] == 'Alumno' ||
@@ -39,7 +41,7 @@ if (mysqli_num_rows($proceso) == 1){
 	
 
 } else{
-    header("Location: index.php");
+    header("Location: ".$usuario."index.php");
 }
 
 
