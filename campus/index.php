@@ -145,7 +145,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php
-                                        $sql = "SELECT COUNT(*) total FROM users WHERE Nivel = 'Administrador'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Administrador'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -168,7 +168,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM users WHERE Nivel = 'Asistente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Asistente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -191,7 +191,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM users WHERE Nivel = 'Docente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Docente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -215,7 +215,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM users WHERE Nivel = 'Alumno'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Alumno'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -240,7 +240,7 @@
                                         <i class="fa fa-bar-chart-o"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM courses";
+                                        $sql = "SELECT COUNT(*) total FROM aca_courses";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -334,7 +334,7 @@
                                         <i class="fa  fa-youtube-play"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM videos";
+                                        $sql = "SELECT COUNT(*) total FROM aca_contents Where is_file=0";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
@@ -357,7 +357,7 @@
                                         <i class="fa fa-folder-open"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM files";
+                                        $sql = "SELECT COUNT(*) total FROM aca_contents Where is_file=1";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
