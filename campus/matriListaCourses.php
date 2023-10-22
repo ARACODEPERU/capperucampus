@@ -69,7 +69,7 @@
                             <i class="fa fa-book" style="display: inline-block; margin-top: 5px;"></i> 
                             <b> Lista de Cursos</b> || 
                             <?php include ("conexion.php");
-                                    $consulta = "SELECT count(*) as cuenta FROM courses";
+                                    $consulta = "SELECT count(*) as cuenta FROM aca_courses";
                                     $resultado = $conexion->query($consulta);
                                     while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -91,16 +91,19 @@
                             <tbody>
                                 
                             <?php                
-        $consulta = "SELECT * FROM courses";
-        $resultado = $conexion->query($consulta);
-        while($courses = $resultado->fetch_assoc()){
-    ?>
+                                $consulta = "SELECT *, c.image FotoCourses, c.description NombreCourses, cc.description CategoriaCourses, c.status Estado, c.id IDCourses 
+                                FROM aca_courses c
+                                join aca_category_courses cc on c.category_id = cc.id                                
+                                ";
+                                $resultado = $conexion->query($consulta);
+                                while($courses = $resultado->fetch_assoc()){
+                            ?>
                                 <tr>
                                     <td><img  width="50px;" height="50px;" src="../img/courses/<?php echo $courses['FotoCourses']; ?>"/></td>
                                     <td><?php echo $courses['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $courses['CategoriaCourses']; ?></td>
                                     <td><span class="label label-success label-mini">
-                                      <?php echo $courses['Estado']; ?></span>
+                                      <?php if($courses['Estado'])echo "Activo"; ?></span>
                                     </td>
                                    <td>
                                         <a href="matriculados.php?id=<?php echo $courses['IDCourses'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i> Ver Alumnos</a>

@@ -155,7 +155,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Administrador'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Administrador'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -178,7 +178,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Asistente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Asistente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -201,7 +201,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Docente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Docente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -225,7 +225,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Alumno'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Alumno'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>

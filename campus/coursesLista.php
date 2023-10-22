@@ -72,7 +72,7 @@
                             <i class="fa fa-book" style="display: inline-block; margin-top: 5px;"></i> 
                             <b> Lista de Cursos</b> || 
                             <?php include ("conexion.php");
-                                    $consulta = "SELECT count(*) as cuenta FROM courses";
+                                    $consulta = "SELECT count(*) as cuenta FROM aca_courses";
                                     $resultado = $conexion->query($consulta);
                                     while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -97,7 +97,8 @@
                             <tbody>
                                   
                             <?php                
-                                $consulta = "SELECT * FROM courses ORDER BY IDCourses DESC";
+                                $consulta = "SELECT *, c.image FotoCourses, c.description NombreCourses, c.status Estado, c.id IDCourses
+                                         FROM aca_courses c ORDER BY id DESC";
                                 $resultado = $conexion->query($consulta);
                                 while($courses = $resultado->fetch_assoc()){
                             ?>
@@ -105,7 +106,7 @@
                                     <td><img  width="70px;" height="50px;" src="../img/courses/<?php echo $courses['FotoCourses']; ?>"/></td>
                                     <td>
                                         <?php echo $courses['NombreCourses']; ?> <br/>
-                                        <span class="label label-success label-mini"><?php echo $courses['Estado']; ?></span>
+                                        <span class="label label-success label-mini"><?php  if ($courses['Estado'])echo "Activo"; ?></span>
                                     </td>
                                     
                                     <td>
