@@ -82,7 +82,7 @@
                                 <i class="fa fa-book" style="display: inline-block; margin-top: 5px;"></i> 
                                 <b> Agregar Certificados </b> || Lista de Alumnos
                                 <?php include ("conexion.php");
-                                        $consulta = "SELECT count(*) as cuenta FROM users WHERE Nivel = 'Alumno'";
+                                        $consulta = "SELECT COUNT(*) cuenta FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Alumno'";
                                         $resultado = $conexion->query($consulta);
                                         while($row = $resultado->fetch_assoc()){
                                     ?> 
@@ -105,7 +105,11 @@
                                 </thead>
                                 <tbody>
                             <?php 
-                                $consulta = "SELECT * FROM users WHERE Nivel='Alumno' ORDER BY ID DESC";
+                                $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
+                                            p.number DNI, p.email Email, p.telephone Telefono, us.id ID
+                                            FROM users us join model_has_roles mhs on mhs.model_id=us.id
+                                            join roles r on r.id = mhs.role_id join people p on p.id = us.person_id
+                                            WHERE r.name ='Alumno' ORDER BY us.id DESC";
                                 $resultado = $conexion->query($consulta);
                                 while($value= $resultado->fetch_assoc()){
                             ?> 

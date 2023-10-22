@@ -64,7 +64,7 @@
                             <b> Módulos </b> del Curso || 
                             <?php 
                         $id = $_REQUEST ['id'];
-                              $query = "SELECT * FROM courses WHERE IDCourses='$id' ";
+                              $query = "SELECT *, c.description NombreCourses FROM aca_courses c WHERE id='$id' ";
                               $resultado = $conexion->query($query);
                               while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -76,7 +76,7 @@
                 <div class="row"> 
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM modules WHERE idCourses='$id' ";
+                        $query = "SELECT *, m.description MombreModules, m.id IDModules FROM aca_modules m WHERE course_id='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 

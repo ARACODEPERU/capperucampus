@@ -22,7 +22,7 @@
 <meta name="description" content="">
 <meta name="author" content="Mosaddek">
 <meta name="keyword" content="Habicom | Campus Virtual">
-<?php include ("common/titleCliente.php"); ?>
+<?php // include ("common/titleCliente.php"); ?>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,14 +73,17 @@
                         <ul class="grid cs-style-3">
                             <?php
                                 $id = $_SESSION['ID'];
-                                $query = "SELECT * FROM matriculas m
-                                    INNER JOIN courses c ON m.idCourses = c.IDCourses
-                                    INNER JOIN users us ON m.idUsers = us.ID
-                                    WHERE idUsers='$id' ";
+                                $query = "SELECT *, c.id IDCourses, c.image FotoCourses, c.description NombreCourses, cat.description CategoriaCourses FROM aca_cap_registrations m
+                                    INNER JOIN aca_courses c ON m.course_id = c.id
+                                    INNER JOIN aca_students student ON student.id=m.student_id
+                                    INNER JOIN people pe ON pe.id = student.person_id
+                                    INNER JOIN users us ON us.person_id=pe.id
+                                    JOIN aca_category_courses cat ON cat.id = c.category_id
+                                    WHERE us.id='$id' ";
                                 $resultado = $conexion->query($query);
                                 while($row = $resultado->fetch_assoc())
                                 
-                                  if ($row['estado'] == 'Activo') 
+                                  if ($row['status'] == true) 
                                 {
                             ?>
                             <li>

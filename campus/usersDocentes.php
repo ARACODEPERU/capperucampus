@@ -66,7 +66,7 @@
                                         <i class="fa fa-user" style="display: inline-block; margin-top: 5px;"></i> 
                                         <b> Lista de Docentes</b> || 
                                         <?php include ("conexion.php");
-                                                $consulta = "SELECT count(*) as cuenta FROM users WHERE Nivel = 'Docente'";
+                                                $consulta = "SELECT COUNT(*) cuenta FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Docente'";
                                                 $resultado = $conexion->query($consulta);
                                                 while($row = $resultado->fetch_assoc()){
                                             ?> 
@@ -90,7 +90,12 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $consulta = "SELECT * FROM users WHERE Nivel='Docente' ORDER BY ID DESC";
+                                            $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM, p.number DNI, p.email Email, p.telephone Telefono, us.id ID
+                                                            FROM model_has_roles mhs join roles r on mhs.role_id = r.id 
+                                                            join users us on us.id = mhs.model_id
+                                                            join people p on p.id = us.person_id
+                                                            where r.name='Docente'
+                                                            ORDER BY us.id DESC";
                                             $resultado = $conexion->query($consulta);
                                             while($alumno = $resultado->fetch_assoc()){
                                         ?> 

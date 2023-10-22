@@ -70,7 +70,7 @@
                             <b> Clase </b> del Tema || 
                             <?php 
                         $id = $_REQUEST ['id'];
-                              $query = "SELECT * FROM aca_themes WHERE id ='$id' ";
+                              $query = "SELECT *, t.description NombreThemes FROM aca_themes t WHERE id ='$id' ";
                               $resultado = $conexion->query($query);
                               while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -82,7 +82,7 @@
                 <div class="row">
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM aca_themes t
+                        $query = "SELECT *, t.description NombreThemes, m.description NombreModules FROM aca_themes t
                         INNER JOIN aca_modules m ON t.module_id = m.id
                         WHERE t.id ='$id' ";
                         $resultado = $conexion->query($query);
@@ -103,8 +103,8 @@
                               <ul class="nav nav-pills nav-stacked">
                         <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM files 
-                        WHERE idThemes='$id' ";
+                        $query = "SELECT *, c.description NombreFiles, c.content EnlaceFiles FROM aca_contents c
+                        WHERE theme_id='$id' and is_file=1 ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                         ?> 
@@ -126,8 +126,8 @@
                       
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM videos 
-                        WHERE idThemes='$id' ";
+                        $query = "SELECT *, c.description NombreVideos, c.content EnlaceVideos FROM aca_contents c
+                        WHERE theme_id='$id' and is_file=0 ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 

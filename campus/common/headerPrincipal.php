@@ -1,6 +1,6 @@
 <?php 
     $id = $_SESSION ['ID'];                                
-    $consulta = "SELECT * FROM users WHERE ID='$id'";
+    $consulta = "SELECT *, roles.name as Nivel, users.id as ID FROM users join people on people.id = users.person_id join model_has_roles on users.id=model_has_roles.model_id join roles on roles.id = model_has_roles.role_id WHERE users.id='$id'";
     $resultado = $conexion->query($consulta);
     while($user = $resultado->fetch_assoc()){
 ?>

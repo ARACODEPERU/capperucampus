@@ -70,7 +70,7 @@
                 <br/>
                 <?php 
                     $id = $_SESSION ['ID'];                                
-                    $consulta = "SELECT * FROM users WHERE ID='$id'";
+                    $consulta = "SELECT *, roles.name as Nivel, users.id as ID FROM users join people on people.id = users.person_id join model_has_roles on users.id=model_has_roles.model_id join roles on roles.id = model_has_roles.role_id WHERE users.id='$id'";
                     $resultado = $conexion->query($consulta);
                     while($user = $resultado->fetch_assoc()){
                 ?>
@@ -84,11 +84,11 @@
                                             <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php echo $user['Estado']; ?></b>
                                             <br>
                                             <a data-toggle="modal" href="#myModal1">
-                                                <img style="background: red;"  src="../img/users/<?php echo $user['Foto']; ?>" >
+                                                <img style="background: red;"  src="../img/users/<?php echo $user['avatar']; ?>" >
                                             </a>
                                             <br>
-                                            <b style="font-size: 18px;"><?php  echo $user['Nombre']; ?></b>
-                                            <p style="font-size: 15px;"><?php echo $user['Email']; ?></p>
+                                            <b style="font-size: 18px;"><?php  echo $user['names']; ?></b>
+                                            <p style="font-size: 15px;"><?php echo $user['email']; ?></p>
                                         </div>
                                         <ul class="nav nav-pills nav-stacked">
                                             <li value="seleccionar"><a  data-toggle="modal" href="#myModal1"> <i class="fa fa-edit"></i> Editar Foto</a></li>
@@ -100,27 +100,37 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+
                                 <section class="panel">
                                         <div class="panel-body bio-graph-info" style="background: #fff;">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <p><b>DNI</b>:<br/> <?php echo $user['DNI']; ?></p>
+                                                    <p><b>DNI</b>:<br/> <?php echo $user['number']; ?></p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p><b>Teléfono</b> : <br/> <?php echo $user['Telefono']; ?></p><p>
+                                                    <p><b>Teléfono</b> : <br/> <?php echo $user['telephone']; ?></p><p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p><b>Ocupación</b>: <br/><?php echo $user['Ocupacion']; ?></p>
+                                                    <p><b>Ocupación</b>: <br/><?php echo $user['ocupacion']; ?></p>
+                                                </div>
+                                            <?php 
+                                             $id = $_SESSION ['ID'];                                
+                                                $consulta2 = "SELECT *, departments.name as departamento, provinces.name as provincia, districts.name as distrito FROM districts join people on people.ubigeo = districts.id join users on users.person_id=people.id join provinces on provinces.id=districts.province_id join departments on departments.id = provinces.department_id WHERE users.id='$id'";
+                                                $resultado2 = $conexion->query($consulta2);
+                                                while($user_ubigeo = $resultado2->fetch_assoc()){
+                                            ?>
+                                                <div class="col-md-4">
+                                                    <b>Departamento</b>: <br/><?php echo $user_ubigeo['departamento']; ?></p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <b>Departamento</b>: <br/><?php echo $user['Departamento']; ?></p>
+                                                    <p><b>Provincia</b>: <br/><?php echo $user_ubigeo['provincia']; ?></p>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <p><b>Provincia</b>: <br/><?php echo $user['Provincia']; ?></p>
+                                                    <p><b>Distrito</b>: <br/><?php echo $user_ubigeo['distrito']; ?></p>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <p><b>Distrito</b>: <br/><?php echo $user['Distrito']; ?></p>
-                                                </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                 </section>
@@ -130,7 +140,7 @@
                             <div class="col-md-12">
                                 <section class="panel">
                                     <div class="panel-body bio-graph-info" style="background: #fff;">
-                                        <b>Presentación</b> </span>: <?php echo $user['Presentacion']; ?>
+                                        <b>Presentación</b> </span>: <?php echo $user['presentacion']; ?>
                                     </div>
                                 </section>
                             </div>
@@ -145,7 +155,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Administrador'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Administrador'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -168,7 +178,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Asistente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Asistente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -191,7 +201,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Docente'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Docente'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -215,7 +225,7 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles join roles on role_id = roles.id where roles.name='Alumno'";
+                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Alumno'";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>
@@ -240,7 +250,7 @@
                                         <i class="fa fa-bar-chart-o"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM aca_courses";
+                                        $sql = "SELECT COUNT(*) as total FROM aca_courses";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?> 
