@@ -64,7 +64,7 @@
                             <b> Temas </b> del Módulo || 
                             <?php 
                         $id = $_REQUEST ['id'];
-                              $query = "SELECT * FROM modules WHERE IDModules='$id' ";
+                              $query = "SELECT *, m.description NombreModules FROM aca_modules m WHERE id='$id' ";
                               $resultado = $conexion->query($query);
                               while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -76,7 +76,7 @@
                 <div class="row">
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT * FROM themes WHERE idModules='$id' ";
+                        $query = "SELECT *, t.id IDThemes, t.description NombreThemes FROM aca_themes t WHERE id='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 

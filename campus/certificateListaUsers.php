@@ -106,7 +106,11 @@
                                 <tbody>
                             <?php 
                                 $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
-                                            p.number DNI, p.email Email, p.telephone Telefono, us.id ID
+                                            p.number DNI, p.email Email, p.telephone Telefono, us.id ID,
+                                             CASE 
+                                                WHEN us.status = true THEN 'Activo'
+                                                ELSE 'Inactivo'
+                                            END AS Estado
                                             FROM users us join model_has_roles mhs on mhs.model_id=us.id
                                             join roles r on r.id = mhs.role_id join people p on p.id = us.person_id
                                             WHERE r.name ='Alumno' ORDER BY us.id DESC";

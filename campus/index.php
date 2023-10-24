@@ -70,7 +70,12 @@
                 <br/>
                 <?php 
                     $id = $_SESSION ['ID'];                                
-                    $consulta = "SELECT *, roles.name as Nivel, users.id as ID FROM users join people on people.id = users.person_id join model_has_roles on users.id=model_has_roles.model_id join roles on roles.id = model_has_roles.role_id WHERE users.id='$id'";
+                    $consulta = "SELECT *, roles.name Nivel, us.id ID,
+                    CASE 
+                      WHEN us.status = true THEN 'Activo'
+                      ELSE 'Inactivo'
+                    END AS Estado
+                    FROM users us join people on people.id = us.person_id join model_has_roles on us.id=model_has_roles.model_id join roles on roles.id = model_has_roles.role_id WHERE us.id='$id'";
                     $resultado = $conexion->query($consulta);
                     while($user = $resultado->fetch_assoc()){
                 ?>
@@ -451,7 +456,15 @@
     <!-- Modal -->
     <?php 
         $id = $_SESSION ['ID'];                                
-        $consulta = "SELECT * FROM users WHERE id='$id'";
+        $consulta =  "SELECT *, roles.name Nivel, us.id ID, us.avatar Foto, p.number DNI, p.telephone Telefono, p.email Email, p.ocupacion Ocupacion, p.presentacion Presentacion,
+        dp.name as Departamento, p.name as Provincia, d.name as Distrito
+        CASE 
+          WHEN us.status = true THEN 'Activo'
+          ELSE 'Inactivo'
+        END AS Estado
+        FROM users us join people on people.id = us.person_id join model_has_roles on us.id=model_has_roles.model_id join roles on roles.id = model_has_roles.role_id 
+        join districts d on people.ubigeo = d.id join provinces p on p.id = d.province_id join departments dp on dp.id = p.department_id
+        WHERE us.id='$id'";
         $resultado = $conexion->query($consulta);
         while($alumno = $resultado->fetch_assoc()){
     ?>

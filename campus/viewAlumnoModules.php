@@ -76,7 +76,7 @@
                 <div class="row"> 
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT *, m.description MombreModules, m.id IDModules FROM aca_modules m WHERE course_id='$id' ";
+                        $query = "SELECT *, m.description NombreModules, m.id IDModules FROM aca_modules m WHERE course_id='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 

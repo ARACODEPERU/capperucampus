@@ -68,7 +68,7 @@
                                         <b> Lista de Módulos</b> || 
                                         <?php include ("conexion.php");
                                                 $id = $_REQUEST ['id'];
-                                                $consulta = "SELECT count(*) as cuenta FROM modules WHERE idCourses='$id' ";
+                                                $consulta = "SELECT count(*) as cuenta FROM aca_modules WHERE course_id='$id' ";
                                                 $resultado = $conexion->query($consulta);
                                                 while($row = $resultado->fetch_assoc()){
                                             ?> 
@@ -91,7 +91,8 @@
                                   
                                 <?php
                                     $id = $_REQUEST ['id'];
-                                    $consulta = "SELECT * FROM modules WHERE idCourses='$id' ORDER BY PosicionModules asc ";
+                                    $consulta = "SELECT *, m.position PosicionModules, m.description NombreModules, m.id IDModules
+                                    FROM aca_modules m WHERE course_id='$id' ORDER BY position asc ";
                                     $resultado = $conexion->query($consulta);
                                     while($modules = $resultado->fetch_assoc()){ ?>
                                 <tr>
@@ -162,7 +163,7 @@
                                             </div>
                                                 <?php
                                                         $id = $_REQUEST ['id'];           
-                                                        $consulta = "SELECT * FROM courses WHERE IDCourses='$id' ";
+                                                        $consulta = "SELECT *, c.id IDCourses FROM aca_courses c WHERE id ='$id' ";
                                                         $resultado = $conexion->query($consulta);
                                                         while($courses = $resultado->fetch_assoc()){
                                                 ?>

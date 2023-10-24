@@ -74,9 +74,10 @@
                                     <?php
 
                                     $id = $_REQUEST ['id'];
-                                    $query = "SELECT count(*) as cuenta  FROM matriculas ma
-                                    INNER JOIN users u ON ma.idUsers = u.ID
-                                    WHERE idCourses='$id' ";
+                                    $query = "SELECT count(*) as cuenta  FROM aca_cap_registrations m
+                                    inner join aca_students st on m.student_id = st.id inner  join people p on p.id = st.person_id
+                                    inner join users us on us.person_id =  p.id inner join aca_courses c on c.id = m.course_id                                    
+                                    WHERE c.id='$id' ";
                                     $resultado = $conexion->query($query);
                                     while($row = $resultado->fetch_assoc()){
                                     ?>
@@ -116,9 +117,12 @@
                                     <?php
 
                                     $id = $_REQUEST ['id'];
-                                    $query = "SELECT * FROM matriculas ma
-                                    INNER JOIN users u ON ma.idUsers = u.ID
-                                    WHERE idCourses='$id' ";
+                                    $query = "SELECT *, us.avatar Foto, p.father_lastname ApellidoP, p.mother_lastname ApellidoM, p.names Nombre,
+                                    p.number DNI, p.email Email, us.id ID                                    
+                                    FROM aca_cap_registrations m
+                                    inner join aca_students st on m.student_id = st.id inner  join people p on p.id = st.person_id
+                                    inner join users us on us.person_id =  p.id inner join aca_courses c on c.id = m.course_id                                    
+                                    WHERE c.id='$id' ";
                                     $resultado = $conexion->query($query);
                                     while($row = $resultado->fetch_assoc()){
                                     ?>

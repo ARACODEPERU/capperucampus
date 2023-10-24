@@ -61,9 +61,14 @@
         <?php include ("common/headerCursos.php") ?>
         <?php
             $id = $_REQUEST ['id'];
-            $consulta = "SELECT * FROM courses c
-            INNER JOIN users u ON c.idDocente = u.ID
-            WHERE IDCourses ='$id'";
+            $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses, c.status Estado,
+            ca.description CategoriaCourses, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
+            c.course_day diaCourses, c.course_month mesCourses, c.course_year yearCourses, c.image FotoCourses
+            FROM aca_courses c
+            INNER JOIN users us ON c.teacher_id = us.id
+            join aca_category_courses ca on ca.id = c.category_id
+            join people p on p.id = us.person_id
+            WHERE c.id ='$id'";
             $resultado = $conexion->query($consulta);
             while($dato = $resultado->fetch_assoc()){
         ?>     
@@ -110,7 +115,11 @@
                                                         <?php echo $dato['Nombre']; echo " "; echo $dato['ApellidoP']; echo " "; echo $dato['ApellidoM']; ?>
                                                     </option>
                                                     <?php
-                                                        $consulta = "SELECT * FROM users WHERE Nivel='Docente'";
+                                                        $consulta = "SELECT *, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
+
+                                                        FROM model_has_roles mhs join roles r on mhs.role_id = r.id join users us on us.id = mhs.role_id 
+                                                        join people p on p.id = us.person_id
+                                                        where r.name='Docente'";
                                                         $resultado = $conexion->query($consulta);
                                                         while($docentes = $resultado->fetch_assoc()){
                                                     ?>
@@ -182,11 +191,14 @@
                                                 <label>Año: *</label>
                                                 <select type="text" class="form-control" name="Year" require="">
                                                     <option><?php echo $dato['yearCourses'] ?></option>
-                                                    <option>2020</option>
-                                                    <option>2021</option>
-                                                    <option>2022</option>
                                                     <option>2023</option>
                                                     <option>2024</option>
+                                                    <option>2025</option>
+                                                    <option>2026</option>
+                                                    <option>2027</option>
+                                                    <option>2028</option>
+                                                    <option>2029</option>
+                                                    <option>2030</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -66,7 +66,7 @@
                                 <i class="fa fa-graduation-cap" style="display: inline-block; margin-top: 5px;"></i> 
                                 <b> <?php 
                                                     $id = $_REQUEST ['id'];                            
-                                                    $consulta = "SELECT * FROM users WHERE ID='$id'";
+                                                    $consulta = "SELECT *, p.names Nombre FROM users us join people p on p.id = us.person_id WHERE us.id='$id'";
                                         $resultado = $conexion->query($consulta);
                                         while($row = $resultado->fetch_assoc()){
                                     ?> 
@@ -91,7 +91,7 @@
                                 <div class="row">
                                                     <?php 
                                                     $id = $_REQUEST ['id'];                            
-                                                    $consulta = "SELECT * FROM users WHERE ID='$id'";
+                                                    $consulta = "SELECT *, p.names Nombre, us.id ID FROM users us join people p on p.id = us.person_id WHERE us.id='$id'";
                                                     $resultado = $conexion->query($consulta);
                                                     while($alumno = $resultado->fetch_assoc()){
                                                 ?>    
@@ -103,7 +103,7 @@
                                                                 name="idCourses" require="">
                                                                 <option>Seleccionar...</option>
                                                                 <?php                
-                                                                        $consulta = "SELECT * FROM courses";
+                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses FROM aca_courses c";
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($courses = $resultado->fetch_assoc()){
                                                                     ?>
@@ -141,7 +141,7 @@
                                             <div class="row">
                                                     <?php 
                                                     $id = $_REQUEST ['id'];                            
-                                                    $consulta = "SELECT * FROM users WHERE ID='$id'";
+                                                    $consulta = "SELECT *, p.names Nombre, us.id ID FROM users us join people p on p.id = us.person_id WHERE us.id='$id'";
                                                     $resultado = $conexion->query($consulta);
                                                     while($alumno = $resultado->fetch_assoc()){
                                                 ?>    
@@ -153,7 +153,7 @@
                                                                 name="idCourses" require="">
                                                                 <option>Seleccionar...</option>
                                                                 <?php                
-                                                                        $consulta = "SELECT * FROM courses";
+                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses FROM aca_courses c";
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($courses = $resultado->fetch_assoc()){
                                                                     ?>
@@ -197,9 +197,12 @@
                                 <?php
                                 
                                 $id = $_REQUEST ['id'];
-                                $query = "SELECT * FROM certificado ce
-                                INNER JOIN courses c ON ce.idCourses = c.IDCourses
-                                WHERE idUsers='$id' ";
+                                $query = "SELECT *, ce.image Foto, c.description NombreCourses, ca.description CategoriaCourses, ce.id IDCertificate
+                                FROM aca_certificates ce
+                                INNER JOIN aca_courses c ON ce.course_id = c.id inner join aca_students st on st.id = ce.student_id
+                                join people p on p.id = st.person_id join users us on us.person_id = p.id
+                                join aca_category_courses ca on c.category_id = ca.id
+                                WHERE us.id='$id' ";
                                 $resultado = $conexion->query($query);
                                 while($row = $resultado->fetch_assoc()){
                                     ?>
@@ -223,9 +226,12 @@
                 <div class="row">
                 <?php
                 $id = $_REQUEST ['id'];
-                $query = "SELECT * FROM certificado ce
-                INNER JOIN courses c ON ce.idCourses = c.IDCourses
-                WHERE idUsers='$id' ";
+                $query = "SELECT *, ce.image Foto, c.description NombreCourses, ca.description CategoriaCourses, ce.id IDCertificate
+                FROM aca_certificates ce
+                INNER JOIN aca_courses c ON ce.course_id = c.id inner join aca_students st on st.id = ce.student_id
+                join people p on p.id = st.person_id join users us on us.person_id = p.id
+                join aca_category_courses ca on c.category_id = ca.id
+                WHERE us.id='$id' ";
                 $resultado = $conexion->query($query);
                 while($row = $resultado->fetch_assoc()){ ?>
                     <div class="col-md-6">

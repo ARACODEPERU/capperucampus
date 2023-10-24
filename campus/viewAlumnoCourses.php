@@ -65,7 +65,7 @@
                             <i class="fa fa-book" style="display: inline-block; margin-top: 5px;"></i> 
                             <b> Nuestros Cursos</b> || 
                             <?php include ("conexion.php");
-                                    $consulta = "SELECT count(*) as cuenta FROM courses";
+                                    $consulta = "SELECT count(*) as cuenta FROM ACA_courses";
                                     $resultado = $conexion->query($consulta);
                                     while($row = $resultado->fetch_assoc()){
                                 ?> 
@@ -77,7 +77,10 @@
                         <ul class="grid cs-style-3">
                           
                             <?php
-                                $query = "SELECT * FROM courses";
+                                $query = "SELECT *, c.id IDCourses, c.image FotoCourses, c.description NombreCourses, ca.description CategoriaCourses
+                                FROM aca_courses c
+                                join aca_category_courses ca on ca.id = c.category_id
+                                ";
                                 $resultado = $conexion->query($query);
                                 while($courses = $resultado->fetch_assoc()){
                             ?>
