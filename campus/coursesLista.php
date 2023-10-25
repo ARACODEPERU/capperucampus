@@ -113,10 +113,10 @@
                                         <a  href="modulesLista.php?id=<?php echo $courses['IDCourses'];?>" class="btn btn-primary btn">+ Módulo</a>
                                     </td> 
                                     <td>
-                                      <a title="Ver" href="viewAlumnoModules.php?id=<?php echo $courses['IDCourses'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
-                                      <a title="Editar" href="coursesEditar.php?id=<?php echo $courses['IDCourses'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                      <a title="Eliminar" href="common/acadEliminarCourses.php?id=<?php echo $courses['IDCourses'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
-                                   </td>
+                                        <a title="Ver" href="viewAlumnoModules.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                        <a title="Editar" href="coursesEditar.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
+                                        <a title="Eliminar" href="common/acadEliminarCourses.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o"></i></a>
+                                    </td>
                                 </tr>
                                 <?php  }  ?>
                               </tbody>
@@ -151,8 +151,13 @@
                                                         <select type="text" class="form-control" 
                                                                 name="CategoriaCourses">
                                                                 <option>Seleccionar...</option>
-                                                                <option>NIIF</option>
-                                                                <option>IMPUESTOS</option>
+                                                                <?php  
+                                                                        $consulta = "SELECT * from aca_category_courses";
+                                                                        $resultado = $conexion->query($consulta);
+                                                                        while($category= $resultado->fetch_assoc()){
+                                                                ?>
+                                                                    <option value="<?php echo $category['id'] ?>"><?php echo $category['description']; ?></option>                                                    
+                                                                <?php   }   ?>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -162,7 +167,9 @@
                                                                 <option>Seleccionar...</option>
                                                                 
                                                                 <?php  
-                                                                        $consulta = "SELECT * FROM users WHERE Nivel='Docente'  ";
+                                                                        $consulta = "SELECT p.names Nombre, u.id ID FROM model_has_roles mhr join roles r on mhr.role_id = r.id
+                                                                        join users u on u.id = mhr.model_id join people p on p.id = u.person_id
+                                                                        where r.name='Docente'";
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($usuario= $resultado->fetch_assoc()){
                                                                 ?>

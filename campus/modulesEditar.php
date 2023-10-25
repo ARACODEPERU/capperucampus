@@ -60,7 +60,9 @@ require 'common/academicAgregarModules.php';
       <!--main content start-->
     <?php
         $id = $_REQUEST ['id'];
-        $sentencia= $pdo->prepare("SELECT * FROM modules WHERE IDModules ='$id'");
+        $sentencia= $pdo->prepare("SELECT description NombreModules, id IDModules, position PosicionModules, 
+        course_id idCourses
+        FROM aca_modules WHERE id ='$id'");
         $sentencia->execute();
         $listaModules=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($listaModules as $modules) {  

@@ -9,8 +9,8 @@ if(isset($_FILES['foto'])){
     );   
 }
 
-$query = "UPDATE `courses` SET  FotoCourses='$Foto'
-WHERE IDCourses='$id'"; 
+$query = "UPDATE `aca_courses` SET  image='$Foto'
+WHERE id='$id'"; 
 $resultado = $conexion->query($query);
 
 if($resultado){

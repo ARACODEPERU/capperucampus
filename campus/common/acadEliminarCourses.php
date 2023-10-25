@@ -1,7 +1,7 @@
 <?php
 include("../conexion.php");
 $id = $_REQUEST['id'];
-$consulta = "DELETE FROM `courses` WHERE  IDCourses='$id' ";
+$consulta = "DELETE FROM `aca_courses` WHERE  id='$id' ";
 $resultado = $conexion->query($consulta);
 
 if($resultado){

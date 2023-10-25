@@ -99,11 +99,11 @@
                                             </div>
                                                 <?php
                                                         $id = $_REQUEST ['id'];           
-                                                        $consulta = "SELECT * FROM modules WHERE IDModules='$id' ";
+                                                        $consulta = "SELECT * FROM aca_modules WHERE id='$id' ";
                                                         $resultado = $conexion->query($consulta);
                                                         while($modules = $resultado->fetch_assoc()){
                                                             ?>
-                                                        <input type="text" name="idModules" value="<?php echo $modules['IDModules'] ?>" required>          
+                                                        <input type="text" name="idModules" value="<?php echo $modules['id'] ?>" required hidden>          
                                                 <?php   }   ?>
                                                 
                                             <div class="col-md-9">
@@ -149,24 +149,24 @@
                                   
                                 <?php
                                 $id = $_REQUEST ['id'];
-                                $consulta = "SELECT * FROM themes WHERE idModules='$id' ORDER BY PosicionThemes asc ";
+                                $consulta = "SELECT * FROM aca_themes WHERE module_id='$id' ORDER BY position asc ";
                                 
                                     $resultado = $conexion->query($consulta);
                                     while($themes = $resultado->fetch_assoc()){
                                     ?>
                                 <tr>
-                                    <td><?php echo $themes['PosicionThemes']; ?></td>
-                                    <td><?php echo $themes['NombreThemes']; ?></td>
+                                    <td><?php echo $themes['position']; ?></td>
+                                    <td><?php echo $themes['description']; ?></td>
                                     <td>
-                                        <a href="videosLista.php?id=<?php echo $themes['IDThemes'];?>" class="btn btn-primary btn">+ Videos</a>
+                                        <a href="videosLista.php?id=<?php echo $themes['id'];?>" class="btn btn-primary btn">+ Videos</a>
                                     </td>
                                     <td>
-                                        <a href="filesLista.php?id=<?php echo $themes['IDThemes'];?>" class="btn btn-primary btn">+ Archivos</a>
+                                        <a href="filesLista.php?id=<?php echo $themes['id'];?>" class="btn btn-primary btn">+ Archivos</a>
                                     </td>
                                     <td>
-                                      <a href="class.php?id=<?php echo $themes['IDThemes'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
-                                      <a href="themesEditar.php?id=<?php echo $themes['IDThemes'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarThemes.php?id=<?php echo $themes['IDThemes'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                      <a href="class.php?id=<?php echo $themes['id'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                      <a href="themesEditar.php?id=<?php echo $themes['id'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
+                                      <a href="common/acadEliminarThemes.php?id=<?php echo $themes['id'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este TEMA?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>

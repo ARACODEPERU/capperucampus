@@ -12,15 +12,15 @@ $Year = $_POST['Year'];
 
 //$txtFoto = $_FILES['txtFoto']["name"];
 
-$query = "UPDATE `courses` SET 
-                Estado='$Estado', 
-                NombreCourses='$Nombre', 
-                CategoriaCourses='$Categoria', 
-                idDocente='$idDocente', 
-                diaCourses='$Dia', 
-                mesCourses='$Mes', 
-                yearCourses='$Year'
-                WHERE IDCourses='$id'"; 
+$query = "UPDATE `aca_courses` SET 
+                status='$Estado', 
+                description='$Nombre', 
+                category_id='$Categoria', 
+                teacher_id='$idDocente', 
+                course_day='$Dia', 
+                course_month='$Mes', 
+                course_year='$Year'
+                WHERE id='$id'"; 
 
 $resultado = $conexion->query($query);
 //$now = $resultado->fetch_assoc();

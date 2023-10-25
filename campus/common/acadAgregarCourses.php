@@ -12,8 +12,8 @@ if(isset($_FILES['foto'])){
     );   
 }
 
-$query = "INSERT INTO courses(Estado, NombreCourses, CategoriaCourses, idDocente, FotoCourses) 
-VALUES ('$Estado','$Nombre','$Categoria','$idDocente','$Foto')";
+$query = "INSERT INTO aca_courses(status, description, category_id, teacher_id, image) 
+VALUES (1,'$Nombre','$Categoria','$idDocente','$Foto')";
         $resultado = $conexion->query($query);
 
 if($resultado){

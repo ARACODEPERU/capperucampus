@@ -62,7 +62,7 @@
         <?php
             $id = $_REQUEST ['id'];
             $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses, c.status Estado,
-            ca.description CategoriaCourses, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
+            ca.description CategoriaCourses, ca.id categoria_id, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
             c.course_day diaCourses, c.course_month mesCourses, c.course_year yearCourses, c.image FotoCourses
             FROM aca_courses c
             INNER JOIN users us ON c.teacher_id = us.id
@@ -92,9 +92,8 @@
                                             <div class="col-md-4">
                                                 <label>Estado: *</label>
                                                 <select type="text" class="form-control" name="Estado" require="">
-                                                    <option><?php echo $dato['Estado'] ?></option>
-                                                    <option>Activo</option>
-                                                    <option>Inactivo</option>
+                                                    <option value ="1" <?php if($dato['Estado'])echo "selected" ?>>Activo</option>
+                                                    <option value ="0" <?php if(!$dato['Estado'])echo "selected" ?>>Inactivo</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -103,9 +102,16 @@
                                             <div class="col-md-6">
                                                 <label>Categoria: *</label>
                                                 <select type="text" class="form-control" name="Categoria" require="">
-                                                    <option><?php echo $dato['CategoriaCourses'] ?></option>
-                                                    <option>Informatica</option>
-                                                    <option>Gestión Publica</option>
+                                                    <option value="<?php echo $dato['categoria_id'] ?>"><?php echo $dato['CategoriaCourses'] ?></option>
+                                                    <?php
+                                                        $consulta = "SELECT * from aca_category_courses";
+                                                        $resultado = $conexion->query($consulta);
+                                                        while($categorias = $resultado->fetch_assoc()){
+                                                    ?>
+                                                    <option value="<?php echo $categorias['id'] ?>">
+                                                        <?php echo $categorias['description'];?>
+                                                    </option>                                                    
+                                                    <?php   }   ?>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -116,7 +122,6 @@
                                                     </option>
                                                     <?php
                                                         $consulta = "SELECT *, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
-
                                                         FROM model_has_roles mhs join roles r on mhs.role_id = r.id join users us on us.id = mhs.role_id 
                                                         join people p on p.id = us.person_id
                                                         where r.name='Docente'";
@@ -208,7 +213,7 @@
                                         <a href="coursesLista.php" class="btn btn-default"  type="button">
                                             <i class="fa  fa-arrow-circle-left"></i> Regresar
                                         </a>
-                                        <button  class="btn btn-success" type="submit" name="accion">Agregar +</button>
+                                        <button  class="btn btn-success" type="submit" name="accion">Modificar +</button>
                                     </div>   
                                 </form>
                             </div>
@@ -235,7 +240,7 @@
                                         <a href="coursesLista.php" class="btn btn-default" type="button">
                                             <i class="fa  fa-arrow-circle-left"></i> Regresar
                                         </a>
-                                        <button  class="btn btn-success" type="submit" name="accion">Agregar +</button>
+                                        <button  class="btn btn-success" type="submit" name="accion">Modificar +</button>
                                     </div>   
                                 </form>
                             </div>

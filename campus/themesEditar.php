@@ -62,7 +62,9 @@ require 'common/academicAgregarThemes.php';
       <!--main content start-->
     <?php
         $id = $_REQUEST ['id'];
-        $sentencia= $pdo->prepare("SELECT * FROM themes WHERE IDThemes ='$id'");
+        $sentencia= $pdo->prepare("SELECT description NombreThemes, id IDThemes, module_id idModules,
+        position PosicionThemes
+        FROM aca_themes WHERE id ='$id'");
         $sentencia->execute();
         $listaThemes=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($listaThemes as $themes) {  

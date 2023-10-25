@@ -99,11 +99,11 @@
                                                 <?php
                                                             
                                                         $id = $_REQUEST ['id'];           
-                                                        $consulta = "SELECT * FROM themes WHERE IDThemes='$id' ";
+                                                        $consulta = "SELECT * FROM aca_themes WHERE id='$id' ";
                                                         $resultado = $conexion->query($consulta);
                                                         while($themes = $resultado->fetch_assoc()){
                                                             ?>
-                                                        <input type="text" name="idThemes" value="<?php echo $themes['IDThemes'] ?>" required>        
+                                                        <input type="text" name="idThemes" value="<?php echo $themes['id'] ?>" required hidden>        
                                                   <?php   }   ?>
                                                 
                                             <div class="col-md-9">
@@ -157,19 +157,19 @@
                                   
                                 <?php 
                                     $id = $_REQUEST ['id'];           
-                                    $consulta = "SELECT * FROM videos WHERE idThemes='$id' ORDER BY PosicionVideos asc  ";
+                                    $consulta = "SELECT * FROM aca_contents WHERE theme_id='$id' and is_file = 0 ORDER BY position asc  ";
                                     $resultado = $conexion->query($consulta);
                                     while($videos = $resultado->fetch_assoc()){
                                     
                                     ?>
                                 <tr>
-                                    <td><?php echo $videos['PosicionVideos']; ?></td>
-                                    <td><?php echo $videos['NombreVideos']; ?></td>
-                                    <!--<td style="width: 150px;"><?php echo $videos['EnlaceVideos']; ?></td>-->
+                                    <td><?php echo $videos['position']; ?></td>
+                                    <td><?php echo $videos['description']; ?></td>
+                                    <!--<td style="width: 150px;"><?php echo $videos['content']; ?></td>-->
                                     <td>
-                                      <a href="viewVideos.php?id=<?php echo $videos['IDVideos'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
-                                      <a href="videosEditar.php?id=<?php echo $videos['IDVideos'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['IDVideos'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                      <a href="viewVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                      <a href="videosEditar.php?id=<?php echo $videos['id'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
+                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>

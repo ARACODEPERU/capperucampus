@@ -63,7 +63,9 @@ require 'common/academicAgregarVideos.php';
       <!--main content start-->
     <?php
         $id = $_REQUEST ['id'];
-        $sentencia= $pdo->prepare("SELECT * FROM videos WHERE IDVideos ='$id'");
+        $sentencia= $pdo->prepare("SELECT *, description NombreVideos, id IDVideos, position PosicionVideos,
+        content EnlaceVideos, theme_id idThemes
+        FROM aca_contents WHERE id ='$id' and is_file=0");
         $sentencia->execute();
         $listaVideos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($listaVideos as $videos) {  
@@ -127,7 +129,7 @@ require 'common/academicAgregarVideos.php';
                                     </div>
                                    <div class="modal-footer">
                                               <a href="coursesLista.php" class="btn btn-default"  type="button"><i class="fa  fa-arrow-circle-left"></i> Regresar</a>
-                                              <button  class="btn btn-success" type="submit" name="accion">Agregar +</button>
+                                              <button  class="btn btn-success" type="submit" name="accion">Modificar +</button>
                                         </div>   
                                 </form>
                             </div>

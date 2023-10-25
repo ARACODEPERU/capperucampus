@@ -8,8 +8,8 @@ $txtidCourses = $_POST['txtidCourses'];
 
 
 
-$query = "UPDATE `modules` SET PosicionModules='$txtPosicion', NombreModules='$txtNombre', idCourses='$txtidCourses'
-WHERE IDModules='$id'"; 
+$query = "UPDATE `aca_modules` SET position='$txtPosicion', description='$txtNombre', course_id='$txtidCourses'
+WHERE id='$id'"; 
 
 $resultado = $conexion->query($query);
 //$now = $resultado->fetch_assoc();

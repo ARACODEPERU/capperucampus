@@ -56,7 +56,7 @@
 
     <?php
         $id = $_REQUEST ['id'];           
-        $consulta = "SELECT * FROM files WHERE IDFiles ='$id' ";
+        $consulta = "SELECT * FROM aca_contents WHERE id ='$id' ";
         $resultado = $conexion->query($consulta);
         while($files = $resultado->fetch_assoc()){
         
@@ -70,7 +70,7 @@
                 <section class="panel">
                     <div class="user-heading round">
                         <a href="#"><img  src="img/product1.jpg" alt=""></a>
-                        <h1><?php  echo $files['NombreFiles'];  ?></h1>
+                        <h1><?php  echo $files['description'];  ?></h1>
                         
                     </div>
                 </section>
@@ -80,7 +80,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="form-row">
-                                <form  action="common/academicModificarFiles.php?id=<?php echo $files['IDFiles']; ?>" method="post" enctype="multipart/form-data">
+                                <form  action="common/academicModificarFiles.php?id=<?php echo $files['id']; ?>" method="post" enctype="multipart/form-data">
                                         <div class="modal-header">
                                             <h4 class="modal-title"><i class="fa fa-file"></i> Editar Archivos</h4>
                                         </div>
@@ -89,7 +89,7 @@
                                             <div class="col-md-3">
                                                 <label for="">Posicion: *</label>
                                                 <select type="text" class="form-control" name="posicion" require="">
-                                                    <option><?php echo $files['PosicionFiles']; ?></option>
+                                                    <option><?php echo $files['position']; ?></option>
                                                     <option value="1">01</option>
                                                     <option value="2">02</option>
                                                     <option value="3">03</option>
@@ -100,19 +100,19 @@
                                                     <option value="8">08</option>
                                                 </select>
                                             </div>
-                                                    <input type="hidden"  name="idThemes" value="<?php echo $files['idThemes']; ?>" require="">        
+                                                    <input type="hidden"  name="idThemes" value="<?php echo $files['theme_id']; ?>" require="">        
                                                
                                             <div class="col-md-9">
                                                 <label for="">Título del Archivo: *</label>
                                                 <input type="text" class="form-control" 
-                                                            name="nombre" value="<?php echo $files['NombreFiles']; ?>" require="">
+                                                            name="nombre" value="<?php echo $files['description']; ?>" require="">
                                             </div>
                                         </div>
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label for="">Enlace del Video: *</label>
-                                                <textarea class="wysihtml5 form-control" rows="5"  name="enlace"><?php echo $files['EnlaceFiles']; ?></textarea>
+                                                <textarea class="wysihtml5 form-control" rows="5"  name="enlace"><?php echo $files['content']; ?></textarea>
                                             </div>
                                         </div>
                                         

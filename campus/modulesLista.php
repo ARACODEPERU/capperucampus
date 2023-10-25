@@ -104,7 +104,7 @@
                                     <td>
                                       <a href="viewAlumnoThemes.php?id=<?php echo $modules['IDModules'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="modulesEditar.php?id=<?php echo $modules['IDModules'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                      <a href="common/acadEliminarModules.php?id=<?php echo $modules['IDModules'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarModules.php?id=<?php echo $modules['IDModules'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>

@@ -97,11 +97,11 @@
                                                 <?php
                                                             
                                                             $id = $_REQUEST ['id'];           
-                                                            $consulta = "SELECT * FROM themes WHERE IDThemes='$id' ";
+                                                            $consulta = "SELECT * FROM aca_themes WHERE id='$id' ";
                                                             $resultado = $conexion->query($consulta);
                                                             while($themes = $resultado->fetch_assoc()){
                                                                 ?>
-                                                <input type="text" name="idThemes" value="<?php echo $themes['IDThemes'] ?>" require="">        
+                                                <input type="text" name="idThemes" value="<?php echo $themes['id'] ?>" require="">        
                                                 <?php   }   ?>
                                                 
                                             <div class="col-md-9">
@@ -151,7 +151,7 @@
                             <tbody>
                                 <?php
                                     $id = $_REQUEST ['id'];           
-                                    $consulta = "SELECT * FROM files WHERE idThemes='$id' ORDER BY PosicionFiles asc  ";
+                                    $consulta = "SELECT position PosicionFiles, description NombreFiles, content EnlaceFiles, id IDFiles FROM aca_contents WHERE theme_id='$id' and is_file = 1 ORDER BY position asc  ";
                                     $resultado = $conexion->query($consulta);
                                     while($files = $resultado->fetch_assoc()){
                                     

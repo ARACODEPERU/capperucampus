@@ -6,12 +6,12 @@ $idThemes = $_POST['idThemes'];
 $Nombre = $_POST['NombreVideos'];
 $Enlace = $_POST['EnlaceVideos'];
 
-$query = "INSERT INTO videos(PosicionVideos, idThemes, NombreVideos, EnlaceVideos) 
-VALUES ('$Posicion','$idThemes','$Nombre','$Enlace')";
+$query = "INSERT INTO aca_contents(position, theme_id, description, content, is_file) 
+VALUES ('$Posicion','$idThemes','$Nombre','$Enlace', 0)";
         $resultado = $conexion->query($query);
 
 if($resultado){
-    header ("Location: ../coursesLista.php");
+    header ("Location: ../videosLista.php?id=".$idThemes);
 }
 else{
     
