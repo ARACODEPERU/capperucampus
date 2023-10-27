@@ -56,7 +56,12 @@
         <?php include ("common/headerDocente.php") ?>
 <!--main content start-->
         <?php $id = $_REQUEST ['id'];
-        $consulta = "SELECT * FROM users WHERE ID='$id'";
+        $consulta = "SELECT u.avatar Foto, p.email Email, p.names Nombre, r.name Nivel, u.id ID, p.ocupacion Ocupacion, p.number DNI,
+        p.father_lastname ApellidoP, p.mother_lastname ApellidoM, p.telephone Telefono, p.presentacion Presentacion, u.status Estado,
+        dis.name Distrito, pro.name Provincia, dep.name Departamento
+        FROM users u join people p on p.id = u.person_id join model_has_roles mhr on mhr.model_id=u.id join roles r on mhr.role_id = r.id
+        join districts dis on p.ubigeo = dis.id join provinces pro on pro.id = dis.province_id join departments dep on dep.id = pro.department_id
+        WHERE u.id='$id'";
         $resultado = $conexion->query($consulta);
         while($usuario = $resultado->fetch_assoc()){ ?>     
             <section id="main-content">
@@ -67,7 +72,13 @@
                         <aside class="profile-nav col-lg-4">
                             <section class="panel">
                                 <div class="user-heading round">
-                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php echo $usuario['Estado']; ?></b>
+                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php
+                                                                                                                                if ($usuario['Estado'] == 1) {
+                                                                                                                                    echo "Activo";
+                                                                                                                                } elseif ($estado == 0) {
+                                                                                                                                    echo "Inactivo";
+                                                                                                                                }
+                                                                                                                                ?></b>
                                     <br>
                                     <a data-toggle="modal" href="#myModal1">
                                         <img style="background: red;"  src="../img/users/<?php echo $usuario['Foto']; ?>" >
@@ -100,14 +111,28 @@
                                                 <div class="col-md-2">
                                                     <label>Estado: *</label>
                                                     <select type="text" class="form-control" name="estado" required>
-                                                        <option value="<?php echo $usuario['Estado'] ?>" ><?php echo $usuario['Estado'] ?></option>
-                                                        <option>Activo</option>
-                                                        <option>Inactivo</option>
+                                                        <option value="<?php echo $usuario['Estado'] ?>" ><?php
+                                                                                                         if ($usuario['Estado'] == 1) {
+                                                                                                         echo "Activo";
+                                                                                                         } elseif ($estado == 0) {
+                                                                                                         echo "Inactivo";
+                                                                                                        }
+                                                                                                        ?></b></option>
+                                                        <option value="1">Activo</option>
+                                                        <option value="0">Inactivo</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-7">
-                                                    <label>Nombre Completos: *</label>
+                                                <div class="col-md-3">
+                                                    <label>Nombres: *</label>
                                                     <input type="text" class="form-control" name="nombre" value="<?php echo $usuario['Nombre'] ?>" required>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>1er Apellido: *</label>
+                                                    <input type="text" class="form-control" name="ApellidoP" value="<?php echo $usuario['ApellidoP'] ?>" required>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>2do Apellido: *</label>
+                                                    <input type="text" class="form-control" name="ApellidoM" value="<?php echo $usuario['ApellidoM'] ?>" required>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>DNI: *</label>
@@ -176,9 +201,7 @@
                                                 <div class="col-md-12">
                                                     <label>Presentación: *</label>
                                                     <!--<textarea class="wysihtml5 form-control" rows="5"  name="presentacion" readonly>-->
-                                                    <textarea class="wysihtml5 form-control" rows="5"  name="presentacion">
-                                                        <?php echo $usuario['Presentacion']; ?>
-                                                    </textarea>
+                                                    <textarea class="wysihtml5 form-control" rows="5"  name="presentacion"><?php echo $usuario['Presentacion']; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,7 +209,7 @@
                                             <a href="usersDocentes.php" class="btn btn-danger">
                                                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                                             </a>
-                                            <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                            <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -213,6 +236,7 @@
                                             <input type="hidden" name="nivel" required value="<?php echo $usuario['Nivel'] ?>">       
                                         </div>
                                     </div>
+                                    <input type="text" name="ruta" value="usersDocentesEditar.php?id=" hidden>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-4" style="text-align: center;">
@@ -225,7 +249,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>
-                                    <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                    <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                                 </div>
                             </div>
                         </form>

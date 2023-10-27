@@ -182,6 +182,7 @@ require 'common/usersAgregar.php';
                                     <div class="col-md-4" style="text-align: center;">
                                         <img  width="100%" src="../img/users/<?php echo $usuario['Foto']; ?>" alt="">
                                     </div>
+                                    <input type="text" name="ruta" value="profile.php?id=" hidden>
                                     <div class="form-group col-md-8"><br/>
                                         <input type="file" class="form-control" id="exampleInputFile" aria-describedby="fileHelp"  name="foto">
                                     </div>
@@ -189,7 +190,7 @@ require 'common/usersAgregar.php';
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>
-                                <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                             </div>
                         </div>
                     </form>
