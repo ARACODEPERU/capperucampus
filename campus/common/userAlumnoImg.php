@@ -10,12 +10,12 @@ if(isset($_FILES['foto'])){
     );   
 }
 //SET Nivel='$nivel',
-$query = "UPDATE `users`  avatar='$foto'
+$query = "UPDATE `users` set avatar='$foto'
 WHERE id='$id'"; 
 $resultado = $conexion->query($query);
 
-if($resultado){
-    header ("Location: ../index.php");
+if($resultado){  
+    header ("Location: ../profile.php?id=".$id);
 }
 else{
     

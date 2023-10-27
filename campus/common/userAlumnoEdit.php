@@ -14,16 +14,28 @@ $Distrito = $_POST['distrito'];
 $Ocupacion = $_POST['ocupacion'];
 $Presentacion = $_POST['presentacion'];
 
+$consulta1 = "SELECT p.id p_id FROM users u join people p on p.id = u.person_id WHERE u.id='$id'";
+$resultado1 = $conexion->query($consulta1);
+$person_id;
+if ($resultado1) {
+    $person_id = $resultado1->fetch_assoc(); // Obtener los datos del resultado
+    $person_id = $person_id['p_id']; // Obtener el valor de la columna 'course_id'
+}
 
-$query = "UPDATE `users` SET Nivel='$Nivel', Estado='$Estado', Nombre='$Nombre', DNI='$DNI', Email='$Email',
-Telefono='$Telefono', Departamento='$Departamento', Provincia='$Provincia', Distrito='$Distrito',
-Ocupacion='$Ocupacion', Presentacion='$Presentacion'
-WHERE id='$id'"; 
-
+$query = "UPDATE people set names='$Nombre', number='$DNI', email='$Email', telephone='$Telefono', ocupacion='$Ocupacion', presentacion='$Presentacion'
+WHERE id='$person_id'";
 $resultado = $conexion->query($query);
 
+
+// $query = "UPDATE `users` SET Nivel='$Nivel', Estado='$Estado', Nombre='$Nombre', DNI='$DNI', Email='$Email',
+// Telefono='$Telefono', Departamento='$Departamento', Provincia='$Provincia', Distrito='$Distrito',
+// Ocupacion='$Ocupacion', Presentacion='$Presentacion'
+// WHERE id='$id'"; 
+
+// $resultado = $conexion->query($query);
+
 if($resultado){
-    header ("Location: ../index.php");
+    header ("Location: ../profile.php?id=".$id);
 }
 else{
     echo "Tenemos un Problema";

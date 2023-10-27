@@ -62,7 +62,7 @@ require 'common/usersAgregar.php';
         <!--main content start-->
         <?php $id = $_REQUEST ['id'];
         $sentencia= $pdo->prepare("SELECT u.status Estado, u.avatar Foto, p.names Nombre, p.email Email, r.name Nivel, p.number DNI, p.telephone Telefono,
-        p.ocupacion Ocupacion, p.presentacion Presentacion, dis.name Distrito, pro.name Provincia, dep.name Departamento
+        p.ocupacion Ocupacion, p.presentacion Presentacion, dis.name Distrito, pro.name Provincia, dep.name Departamento, u.id ID
         FROM users u join people p on p.id = u.person_id join model_has_roles mhr on mhr.model_id = u.id join roles r on mhr.role_id = r.id
         join districts dis on dis.id = p.ubigeo join provinces pro on pro.id = dis.province_id join departments dep on dep.id = pro.department_id
         WHERE u.id ='$id'");
@@ -307,15 +307,13 @@ require 'common/usersAgregar.php';
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Presentación: *</label>
-                                        <textarea class="wysihtml5 form-control" rows="5"  name="presentacion" >
-                                            <?php echo $usuario['Presentacion']; ?>
-                                        </textarea>
+                                        <textarea class="wysihtml5 form-control" rows="5"  name="presentacion" ><?php echo $usuario['Presentacion']; ?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>
-                                <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                             </div>
                         </div>
                     </form>
