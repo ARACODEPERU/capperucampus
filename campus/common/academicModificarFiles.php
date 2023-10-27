@@ -14,7 +14,7 @@ $resultado = $conexion->query($query);
 //$now = $resultado->fetch_assoc();
 
 if($resultado){
-    header ("Location: ../coursesLista.php");
+    header ("Location: ../filesLista.php?id=".$idThemes);
 }
 else{
     echo "Tenemos un Problema";

@@ -7,11 +7,11 @@ $Nombre = $_POST['nombre'];
 $Enlace = $_POST['enlace'];
 $idThemes = $_POST['idThemes'];
 
-$query = "INSERT INTO files(PosicionFiles, NombreFiles, EnlaceFiles, idThemes) 
-VALUES ('$Posicion','$Nombre','$Enlace','$idThemes')";
+$query = "INSERT INTO aca_contents(position, description, content, theme_id, is_file) 
+VALUES ('$Posicion','$Nombre','$Enlace','$idThemes', 1)";
          $resultado = $conexion->query($query);
          if($resultado){
-             header ("Location: ../coursesLista.php");
+             header ("Location: ../filesLista.php?id=".$idThemes);
          }
          else{
              echo "Tenemos un Problema";

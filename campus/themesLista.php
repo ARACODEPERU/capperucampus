@@ -68,7 +68,7 @@
                 <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="form-row">    
                         <div class="modal-dialog">
-                            <form  action="common/acadAgregarThemes.php" method="post" enctype="multipart/form-data">
+                            <form  action="common/acadAgregarThemes.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -185,6 +185,19 @@
       <?php  include ("common/footer.php"); ?>
   </section>
 
+  <script>
+    function validarFormulario() {
+        var selectElement = document.querySelector('select[name="PosicionThemes"]');
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        
+        if (selectedOption === 'Seleccionar...') {
+            alert('Por favor, seleccione una opción en el campo Posición.');
+            return false; // Detiene el envío del formulario
+        }
+        
+        return true; // Permite el envío del formulario si se ha seleccionado una opción válida
+    }
+</script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

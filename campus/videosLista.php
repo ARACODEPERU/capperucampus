@@ -67,7 +67,7 @@
                 <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="form-row">    
                         <div class="modal-dialog">
-                            <form  action="common/acadAgregarVideos.php" method="post" enctype="multipart/form-data">
+                            <form  action="common/acadAgregarVideos.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -167,9 +167,9 @@
                                     <td><?php echo $videos['description']; ?></td>
                                     <!--<td style="width: 150px;"><?php echo $videos['content']; ?></td>-->
                                     <td>
-                                      <a href="viewVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                      <a target="_blank" href="<?php echo $videos['id'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="videosEditar.php?id=<?php echo $videos['id'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este VIDEO?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>
@@ -340,7 +340,19 @@
       </footer>
       <!--footer end-->
   </section>
-
+  <script>
+    function validarFormulario() {
+        var selectElement = document.querySelector('select[name="PosicionVideos"]');
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        
+        if (selectedOption === 'Seleccionar...') {
+            alert('Por favor, seleccione una opción en el campo Posición.');
+            return false; // Detiene el envío del formulario
+        }
+        
+        return true; // Permite el envío del formulario si se ha seleccionado una opción válida
+    }
+</script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

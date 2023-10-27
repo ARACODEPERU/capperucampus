@@ -118,8 +118,8 @@
                                         
                                     </div>
                                    <div class="modal-footer">
-                                              <a href="coursesLista.php" class="btn btn-default"  type="button"><i class="fa  fa-arrow-circle-left"></i> Regresar</a>
-                                              <button  class="btn btn-success" type="submit" name="accion">Agregar +</button>
+                                              <a href="filesLista.php?id=<?php echo $files['theme_id'] ?>" class="btn btn-default"  type="button"><i class="fa  fa-arrow-circle-left"></i> Regresar</a>
+                                              <button  class="btn btn-success" type="submit" name="accion">Modificar +</button>
                                         </div>   
                                 </form>
                             </div>

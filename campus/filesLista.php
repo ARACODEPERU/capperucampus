@@ -67,7 +67,7 @@
                 <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="form-row">    
                         <div class="modal-dialog">
-                            <form  action="common/academicAgregarFiles.php" method="post" enctype="multipart/form-data">
+                            <form  action="common/academicAgregarFiles.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -101,7 +101,7 @@
                                                             $resultado = $conexion->query($consulta);
                                                             while($themes = $resultado->fetch_assoc()){
                                                                 ?>
-                                                <input type="text" name="idThemes" value="<?php echo $themes['id'] ?>" require="">        
+                                                <input type="text" name="idThemes" value="<?php echo $themes['id'] ?>" require="" hidden>        
                                                 <?php   }   ?>
                                                 
                                             <div class="col-md-9">
@@ -162,9 +162,9 @@
                                     <td><?php echo $files['NombreFiles']; ?></td>
                                     
                                     <td>
-                                      <a href="<?php echo $files['EnlaceFiles']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                      <a target="_blank" href="<?php echo $files['EnlaceFiles']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="filesEditar.php?id=<?php echo $files['IDFiles'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este Archivo?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>
@@ -182,6 +182,19 @@
       <?php  include ("common/footer.php"); ?>
   </section>
 
+  <script>
+    function validarFormulario() {
+        var selectElement = document.querySelector('select[name="posicion"]');
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        
+        if (selectedOption === 'Seleccionar...') {
+            alert('Por favor, seleccione una opción en el campo Posición.');
+            return false; // Detiene el envío del formulario
+        }
+        
+        return true; // Permite el envío del formulario si se ha seleccionado una opción válida
+    }
+</script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

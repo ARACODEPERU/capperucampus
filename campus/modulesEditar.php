@@ -135,8 +135,8 @@ require 'common/academicAgregarModules.php';
                                         
                                     </div>
                                    <div class="modal-footer">
-                                              <a href="coursesLista.php" class="btn btn-default"  type="button"><i class="fa  fa-arrow-circle-left"></i> Regresar</a>
-                                              <button  class="btn btn-success" type="submit" name="accion">Agregar +</button>
+                                              <a href="modulesLista.php?id=<?php echo $modules['idCourses'] ?>" class="btn btn-default"  type="button"><i class="fa  fa-arrow-circle-left"></i> Regresar</a>
+                                              <button  class="btn btn-success" type="submit" name="accion">Modificar +</button>
                                         </div>   
                                 </form>
                             </div>

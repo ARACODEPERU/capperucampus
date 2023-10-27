@@ -61,7 +61,11 @@ require 'common/usersAgregar.php';
 
         <!--main content start-->
         <?php $id = $_REQUEST ['id'];
-        $sentencia= $pdo->prepare("SELECT * FROM users WHERE ID ='$id'");
+        $sentencia= $pdo->prepare("SELECT u.status Estado, u.avatar Foto, p.names Nombre, p.email Email, r.name Nivel, p.number DNI, p.telephone Telefono,
+        p.ocupacion Ocupacion, p.presentacion Presentacion, dis.name Distrito, pro.name Provincia, dep.name Departamento
+        FROM users u join people p on p.id = u.person_id join model_has_roles mhr on mhr.model_id = u.id join roles r on mhr.role_id = r.id
+        join districts dis on dis.id = p.ubigeo join provinces pro on pro.id = dis.province_id join departments dep on dep.id = pro.department_id
+        WHERE u.id ='$id'");
         $sentencia->execute();
         $listaUsuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($listaUsuarios as $usuario) {  ?>     
@@ -73,7 +77,14 @@ require 'common/usersAgregar.php';
                         <aside class="profile-nav col-lg-4">
                             <section class="panel">
                                 <div class="user-heading round">
-                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php echo $usuario['Estado']; ?></b>
+                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php
+                                                                                                                                    $estado = $usuario['Estado'];
+                                                                                                                                    if ($estado == 1) {
+                                                                                                                                        echo "Activo";
+                                                                                                                                    } else {
+                                                                                                                                        echo "Inactivo";
+                                                                                                                                    } 
+                                                                                                                                    ?></b>
                                     <br>
                                     <a data-toggle="modal" href="#myModal1">
                                         <img style="background: red;"  src="../img/users/<?php echo $usuario['Foto']; ?>" >
