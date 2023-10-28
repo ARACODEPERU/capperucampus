@@ -97,7 +97,7 @@
                                         </thead>
                                         <tbody>
                                     <?php 
-                                        $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.number DNI, p.email Email, p.telephone Telefono, us.id ID 
+                                        $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.number DNI, p.email Email, p.telephone Telefono, us.id ID, status Estado 
                                                         FROM model_has_roles mhs join roles r on mhs.role_id = r.id 
                                                         join users us on us.id=mhs.model_id
                                                         join people p on p.id = us.person_id
@@ -112,7 +112,13 @@
                                                 
                                         <td style="width: 28%;">
                                             <?php echo $alumno['Nombre']; ?><br/>
-                                            <span class="label label-success label-mini"><?php echo ($alumno['Estado']); ?></span>
+                                            <span class="label label-success label-mini"><?php
+                                                                                        if ($alumno['Estado'] == 1) {
+                                                                                            echo "Activo";
+                                                                                        } else {
+                                                                                            echo "Inactivo";
+                                                                                        }
+                                                                                        ?></span>
                                         </td>
                                         <td style="width: 9%;"><?php echo $alumno['DNI']; ?></td>
                                         <td style="width: 16%;"><?php echo $alumno['Email']; ?></td>
@@ -121,7 +127,7 @@
                                             <a title="Matricular" href="matriUsuario.php?id=<?php echo $alumno['ID'];?>" class="btn btn-info btn"><i class="fa fa-book"></i></a>
                                             <a title="Ver Perfil" href="profile.php?id=<?php echo $alumno['ID'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                             <a title="Editar" href="usersAlumnosEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este Alumno?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
                                             
                                         </td>
                                             </tr>

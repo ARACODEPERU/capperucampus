@@ -60,7 +60,10 @@
         <div class="row" style="padding:10px;">
             <?php 
                 $id = $_REQUEST ['id'];                           
-                $consulta = "SELECT * FROM users WHERE ID='$id'";
+                $consulta = "SELECT u.avatar Foto, p.number DNI, p.email Email, p.telephone Telefono, p.ocupacion Ocupacion, p.presentacion Presentacion,
+                r.name Nivel, p.names Nombre, p.mother_lastname ApellidoM, p.father_lastname ApellidoP, u.id ID
+                FROM users u join people p on p.id=u.person_id join model_has_roles mhr on mhr.model_id=u.id join roles r on r.id=mhr.role_id
+                WHERE u.id='$id'";
                 $resultado = $conexion->query($consulta);
                 while($user = $resultado->fetch_assoc()){
             ?>
@@ -98,22 +101,17 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <?php 
-                                            $id = $_REQUEST ['id'];                            
-                                            $consulta = "SELECT * FROM users WHERE ID='$id'";
-                                            $resultado = $conexion->query($consulta);
-                                            while($alumno = $resultado->fetch_assoc()){
-                                        ?>
-                                        <input type="hidden"  name="idUsers" required value="<?php echo $alumno['ID']; ?>" >   
+                                     
+                                        <input type="hidden"  name="idUsers" required value="<?php echo $_REQUEST ['id']; ?>" >   
                                         <input type="hidden"  name="estado" required value="Activo" >                                                               
-                                        <?php } ?>
+                                        
                                         <div class="col-md-12">
                                             <p class="bg-success" style="padding: 5px;"><b>Lista de Cursos</b></p>
                                             <!--
                                             <select type="text" class="form-control" name="idCourses" >
                                                 <option>Seleccionar...</option>
                                                 <?php                         
-                                                    $consulta = "SELECT * FROM courses";
+                                                    $consulta = "SELECT c.description NombreCourses, c.id IDCourses FROM aca_courses c";
                                                     $resultado = $conexion->query($consulta);
                                                     while($alumno = $resultado->fetch_assoc()){
                                                 ?>
@@ -124,14 +122,14 @@
                                                     
                                             <div class="row">
                                             <?php                         
-                                                $consulta = "SELECT * FROM courses";
+                                                $consulta = "SELECT c.id IDCourses, c.description NombreCourses FROM aca_courses c";
                                                 $resultado = $conexion->query($consulta);
                                                 while($alumno = $resultado->fetch_assoc()){
                                             ?>
                                                 <div class="col-md-6">
                                                     
                                                     <p for="check" >
-                                                        <input name="idCourses"  type="checkbox" id="check" value="<?php echo $alumno['IDCourses']; ?>">
+                                                        <input name="idCourses"  type="radio" id="check" value="<?php echo $alumno['IDCourses']; ?>">
                                                         <?php echo $alumno['NombreCourses']; ?>
                                                     </p>
                                                 </div>
@@ -176,9 +174,13 @@
                                 <?php
                                 
                                 $id = $_REQUEST ['id'];
-                                $query = "SELECT * FROM matriculas ma
-                                INNER JOIN courses c ON ma.idCourses = c.IDCourses
-                                WHERE idUsers='$id' ";
+                                $query = "SELECT c.image FotoCourses, c.description NombreCourses, c.id IDCourses, cat.description CategoriaCourses,
+                                m.status estado, m.id IDMatriculas
+                                FROM aca_cap_registrations m
+                                inner join aca_students st on m.student_id = st.id inner  join people p on p.id = st.person_id
+                                inner join users u on u.person_id =  p.id inner join aca_courses c on c.id = m.course_id    
+                                join aca_category_courses cat on cat.id = c.category_id                                
+                                WHERE u.id='$id' ";
                                 $resultado = $conexion->query($query);
                                 while($row = $resultado->fetch_assoc()){
                                 ?>
@@ -194,14 +196,19 @@
                                             <div class="modal-content">
                                                     <div class="row">
                                                         <div class="col-md-7">
+                                                            <input type="hidden" name="p_id" value="<?php echo $_REQUEST ['id']; ?>">
                                                             <select type="text" class="form-control" name="estado" required>
-                                                                <option value="<?php echo $row['estado'] ?>" ><?php echo $row['estado'] ?></option>
-                                                                <option>Activo</option>
-                                                                <option>Inactivo</option>
+                                                                <option value="<?php echo $row['estado'] ?>" ><?php if($row['estado']){
+                                                                    echo 'Activo';
+                                                                }else{
+                                                                    echo 'Inactivo';
+                                                                }  ?></option>
+                                                                <option value="1">Activo</option>
+                                                                <option value="0">Inactivo</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <button  class="btn btn-success" type="submit" name="accion"><i class="fa fa-spinner" aria-hidden="true"></i></button>
+                                                            <button  title="Activar/Desactivar" class="btn btn-success" type="submit" name="accion"><i class="fa fa-spinner" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                             </div>
@@ -209,7 +216,7 @@
                                     </td>
                                    <td>
                                         <a href="matriculados.php?id=<?php echo $row['IDCourses'];?>" class="btn btn-primary"><i class="fa fa-eye"></i> Alumnos</a>
-                                        <a href="common/matricularEliminar.php?id=<?php echo $row['IDMatriculas'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                        <a href="common/matricularEliminar.php?id=<?php echo $row['IDMatriculas']."&p_id=".$_REQUEST ['id'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar esta Matricula?');"><i class="fa fa-trash-o "></i></a>
                                     </td>
                                 </tr>
                                 <?php  }  ?>

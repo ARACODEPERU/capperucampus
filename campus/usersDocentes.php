@@ -186,7 +186,7 @@
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <label>Nombre: *</label>
+                                            <label>Nombres: *</label>
                                             <input type="text" class="form-control" name="nombre" value="<?php echo $alumno['Nombre'] ?>" required>
                                         </div>
                                         <div class="col-md-4">
@@ -295,11 +295,22 @@
                                     </div>
                                     <br/>
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <label>Nombre: *</label>
-                                            <input type="text" class="form-control" name="nombre" require="">
+                                        <div class="col-md-3">
+                                            <label>Nombres: *</label>
+                                            <input type="text" class="form-control" name="nombres" require="">
                                         </div>
-                                        <div class="col-md-4">
+
+                                        <div class="col-md-3">
+                                            <label>1er Apellido: *</label>
+                                            <input type="text" class="form-control" name="ApellidoP" require="">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label>2do Apellido: *</label>
+                                            <input type="text" class="form-control" name="ApellidoM" require="">
+                                        </div>
+
+                                        <div class="col-md-3">
                                             <label>DNI: *</label>
                                             <input type="text" class="form-control" name="dni" require="">
                                         </div>

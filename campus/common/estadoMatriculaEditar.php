@@ -3,15 +3,16 @@ include("../conexion.php");
 
 $id =$_REQUEST['id'];
 $Estado = $_POST['estado'];
+$p_id = $_POST['p_id'];
 
 
-$query = "UPDATE `matriculas` SET estado='$Estado'
-WHERE IDMatriculas='$id'"; 
+$query = "UPDATE `aca_cap_registrations` SET status='$Estado'
+WHERE id='$id'"; 
 
 $resultado = $conexion->query($query);
 
 if($resultado){
-    header ("Location: ../usersAlumnos.php");
+    header ("Location: ../matriUsuario.php?id=".$p_id);
 }
 else{
     echo "Tenemos un Problema";

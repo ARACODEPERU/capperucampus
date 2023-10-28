@@ -56,7 +56,11 @@
         <?php include ("common/headerAlumno.php") ?>
 <!--main content start-->
         <?php $id = $_REQUEST ['id'];
-        $consulta = "SELECT * FROM users WHERE ID='$id'";
+        $consulta = "SELECT u.status Estado, u.avatar Foto, p.names Nombre, p.email Email, r.name Nivel, p.number DNI, p.telephone Telefono, p.presentacion Presentacion,
+        p.ocupacion Ocupacion, dis.name Distrito, pro.name Provincia, dep.name Departamento, u.id ID, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
+        FROM users u join people p on p.id=u.person_id join model_has_roles mhr on mhr.model_id=u.id join roles r on r.id=mhr.role_id join districts dis on dis.id=p.ubigeo
+        join provinces pro on pro.id=dis.province_id join departments dep on dep.id=pro.department_id
+        WHERE u.id='$id'";
         $resultado = $conexion->query($consulta);
         while($usuario = $resultado->fetch_assoc()){ ?>     
             <section id="main-content">
@@ -67,7 +71,13 @@
                         <aside class="profile-nav col-lg-4">
                             <section class="panel">
                                 <div class="user-heading round">
-                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php echo $usuario['Estado']; ?></b>
+                                    <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php
+                                                                                                                                if ($usuario['Estado'] == 1) {
+                                                                                                                                    echo "Activo";
+                                                                                                                                } else {
+                                                                                                                                    echo "Inactivo";
+                                                                                                                                }
+                                                                                                                                ?></b>
                                     <br>
                                     <a data-toggle="modal" href="#myModal1">
                                         <img style="background: red;"  src="../img/users/<?php echo $usuario['Foto']; ?>" >
@@ -100,15 +110,32 @@
                                                 <div class="col-md-2">
                                                     <label>Estado: *</label>
                                                     <select type="text" class="form-control" name="estado" required>
-                                                        <option value="<?php echo $usuario['Estado'] ?>" ><?php echo $usuario['Estado'] ?></option>
-                                                        <option>Activo</option>
-                                                        <option>Inactivo</option>
+                                                        <option value="<?php echo $usuario['Estado'] ?>" ><?php
+                                                                                                        if ($usuario['Estado'] == 1) {
+                                                                                                        echo "Activo";
+                                                                                                        } else {
+                                                                                                        echo "Inactivo";
+                                                                                                        }
+                                                                                                        ?></option>
+                                                        <option value="1">Activo</option>
+                                                        <option value="0">Inactivo</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-7">
-                                                    <label>Nombre Completos: *</label>
+                                                <div class="col-md-3">
+                                                    <label>Nombres: *</label>
                                                     <input type="text" class="form-control" name="nombre" value="<?php echo $usuario['Nombre'] ?>" required>
                                                 </div>
+
+                                                <div class="col-md-3">
+                                                    <label>1er Apellido: *</label>
+                                                    <input type="text" class="form-control" name="ApellidoP" value="<?php echo $usuario['ApellidoP'] ?>" required>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>2do Apellido: *</label>
+                                                    <input type="text" class="form-control" name="ApellidoM" value="<?php echo $usuario['ApellidoM'] ?>" required>
+                                                </div>
+
                                                 <div class="col-md-3">
                                                     <label>DNI: *</label>
                                                     <input type="text" class="form-control" name="dni" value="<?php echo $usuario['DNI'] ?>" required>
@@ -176,17 +203,16 @@
                                                 <div class="col-md-12">
                                                     <label>Presentación: *</label>
                                                     <!--<textarea class="wysihtml5 form-control" rows="5"  name="presentacion" readonly>-->
-                                                    <textarea class="wysihtml5 form-control" rows="5"  name="presentacion">
-                                                        <?php echo $usuario['Presentacion']; ?>
-                                                    </textarea>
+                                                    <textarea class="wysihtml5 form-control" rows="5"  name="presentacion"><?php echo $usuario['Presentacion']; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="ruta" required value="usersAlumnosEditar.php?id=">
                                         <div class="modal-footer">
-                                            <a href="usersDocentes.php" class="btn btn-danger">
+                                            <a href="usersAlumnos.php" class="btn btn-danger">
                                                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                                             </a>
-                                            <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                            <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -210,7 +236,8 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="hidden" name="nivel" required value="<?php echo $usuario['Nivel'] ?>">       
+                                            <input type="hidden" name="nivel" required value="<?php echo $usuario['Nivel'] ?>">
+                                            <input type="hidden" name="ruta" required value="usersAlumnosEditar.php?id=">       
                                         </div>
                                     </div>
                                     <br/>
@@ -225,7 +252,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>
-                                    <button  class="btn btn-success" type="submit" name="accion">Agregar</button>
+                                    <button  class="btn btn-success" type="submit" name="accion">Modificar</button>
                                 </div>
                             </div>
                         </form>

@@ -1,11 +1,12 @@
 <?php
 include ("../conexion.php");
 $id = $_REQUEST['id'];
-$consulta = "DELETE FROM `matriculas` WHERE  IDMatriculas='$id' ";
+$p_id = $_REQUEST['p_id'];
+$consulta = "DELETE FROM `aca_cap_registrations` WHERE  id='$id' ";
 $resultado = $conexion->query($consulta);
 
 if($resultado){
-    header ("Location: ../matriListaAlumnos.php");
+    header ("Location: ../matriUsuario.php?id=".$p_id);
 }
 
 else{
