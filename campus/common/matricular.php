@@ -9,7 +9,7 @@ $student_id;
 $p_id; //obtenemos el id de estudiante y de persona
 
 
-$consul = "Select p.id p_id from people p join users u on u.person_id=p.id where u.id='$idUsers'";
+$consul = "Select u.person_id p_id from users u where u.id='$idUsers'";
 $resul = $conexion->query($consul);
 if($resul){
     $p_id = $resul->fetch_assoc(); // Obtener los datos del resultado

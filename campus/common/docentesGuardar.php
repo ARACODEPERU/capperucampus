@@ -15,7 +15,7 @@ $departamento = $_POST['departamento'];
 $provincia = $_POST['provincia'];
 $distrito = $_POST['distrito'];
 $foto=$_FILES['foto']["name"];
-
+$apellidoM = $nombres;
 if(isset($_FILES['foto'])){
     move_uploaded_file($_FILES['foto']["tmp_name"],"../../img/users/".$_FILES['foto']["name"]
     );   

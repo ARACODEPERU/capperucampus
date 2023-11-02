@@ -97,7 +97,7 @@
                                         </thead>
                                         <tbody>
                                     <?php 
-                                        $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.number DNI, p.email Email, p.telephone Telefono, us.id ID, status Estado 
+                                        $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM, p.number DNI, p.email Email, p.telephone Telefono, us.id ID, status Estado 
                                                         FROM model_has_roles mhs join roles r on mhs.role_id = r.id 
                                                         join users us on us.id=mhs.model_id
                                                         join people p on p.id = us.person_id
@@ -110,8 +110,8 @@
                                                 <img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $alumno['Foto']; ?>"/>
                                             </td>
                                                 
-                                        <td style="width: 28%;">
-                                            <?php echo $alumno['Nombre']; ?><br/>
+                                        <td style="width: 23%;">
+                                            <?php echo $alumno['Nombre']." ".$alumno['ApellidoP']." ".$alumno['ApellidoM']; ?><br/>
                                             <span class="label label-success label-mini"><?php
                                                                                         if ($alumno['Estado'] == 1) {
                                                                                             echo "Activo";
@@ -164,11 +164,22 @@
                                     </div>
                                     <br/>
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <label>Nombre: *</label>
-                                            <input type="text" class="form-control" name="nombre" require="">
+                                    <div class="col-md-3">
+                                            <label>Nombres: *</label>
+                                            <input type="text" class="form-control" name="nombres" require="">
                                         </div>
-                                        <div class="col-md-4">
+
+                                        <div class="col-md-3">
+                                            <label>1er Apellido: *</label>
+                                            <input type="text" class="form-control" name="ApellidoP" require="">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label>2do Apellido: *</label>
+                                            <input type="text" class="form-control" name="ApellidoM" require="">
+                                        </div>
+
+                                        <div class="col-md-3">
                                             <label>DNI: *</label>
                                             <input type="text" class="form-control" name="dni" require="">
                                         </div>

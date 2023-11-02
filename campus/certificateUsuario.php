@@ -103,7 +103,11 @@
                                                                 name="idCourses" require="">
                                                                 <option>Seleccionar...</option>
                                                                 <?php                
-                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses FROM aca_courses c";
+                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses from users u
+                                                                        join people p on u.person_id=p.id join aca_students stu on stu.person_id=p.id 
+                                                                        join aca_cap_registrations reg on reg.student_id=stu.id join aca_courses c on c.id=reg.course_id
+                                                                        where u.id='$id'";
+                                                                        
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($courses = $resultado->fetch_assoc()){
                                                                     ?>
@@ -153,7 +157,10 @@
                                                                 name="idCourses" require="">
                                                                 <option>Seleccionar...</option>
                                                                 <?php                
-                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses FROM aca_courses c";
+                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses from users u
+                                                                        join people p on u.person_id=p.id join aca_students stu on stu.person_id=p.id 
+                                                                        join aca_cap_registrations reg on reg.student_id=stu.id join aca_courses c on c.id=reg.course_id
+                                                                        where u.id='$id'";
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($courses = $resultado->fetch_assoc()){
                                                                     ?>

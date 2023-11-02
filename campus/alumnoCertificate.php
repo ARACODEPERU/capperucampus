@@ -78,15 +78,16 @@
                             <div class="row">
                                 <?php
                                     $id = $_SESSION ['ID'];
-                                    $query = "SELECT * FROM aca_certificates ce
-                                            INNER JOIN aca_courses c ON ce.course_id = c.id
-                                            WHERE ce.student_id='$id' ";
+                                    $query = "SELECT DISTINCT ce.image image FROM users u join people p on p.id=u.person_id join aca_students stu on stu.person_id=p.id 
+                                    join aca_certificates ce on ce.student_id=stu.id join aca_cap_registrations reg on reg.student_id=stu.id
+                                    join aca_courses c ON c.id = reg.course_id 
+                                            WHERE u.id='$id' ";
                                     $resultado = $conexion->query($query);
                                     while($row = $resultado->fetch_assoc()){ 
                                 ?>
                                 <div class="col-md-4" style="padding: 10px;">
-                                    <a href="../img/certificate/<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                                        <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                                    <a href="../img/certificate/<?php echo $row['image']; ?>" data-lightbox="mygallery" >
+                                        <img  width="100%;" src="../img/certificate/<?php echo $row['image']; ?>"/>
                                     </a>
                                 </div>
                                 <?php  }  ?>
