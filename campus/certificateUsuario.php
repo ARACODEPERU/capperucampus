@@ -131,62 +131,8 @@
                 </section>
             </div>
             </div>
-                <div class="row">
-                    <aside class="profile-info col-lg-12">
-                        <section class="panel">
-                            <div class="panel-body">
-                            <div class="row">
-                                <div class="form-row">
-                                    <form  action="common/certificate.php" method="post" enctype="multipart/form-data">
-                                        <div class="modal-header"  style="background-color: #054261; color: #fff;">
-                                            <b>Subir Certificado</b>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                    <?php 
-                                                    $id = $_REQUEST ['id'];                            
-                                                    $consulta = "SELECT *, p.names Nombre, us.id ID FROM users us join people p on p.id = us.person_id WHERE us.id='$id'";
-                                                    $resultado = $conexion->query($consulta);
-                                                    while($alumno = $resultado->fetch_assoc()){
-                                                ?>    
-                                                    <input type="hidden"  name="idUsers" required value="<?php echo $alumno['ID']; ?>" >                                               
-                                                    <?php } ?>
-                                                    <div class="col-md-12">
-                                                        <label for="">Lista de Cursos: *</label>
-                                                        <select type="text" class="form-control" 
-                                                                name="idCourses" require="">
-                                                                <option>Seleccionar...</option>
-                                                                <?php                
-                                                                        $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses from users u
-                                                                        join people p on u.person_id=p.id join aca_students stu on stu.person_id=p.id 
-                                                                        join aca_cap_registrations reg on reg.student_id=stu.id join aca_courses c on c.id=reg.course_id
-                                                                        where u.id='$id'";
-                                                                        $resultado = $conexion->query($consulta);
-                                                                        while($courses = $resultado->fetch_assoc()){
-                                                                    ?>
-                                                                    <option value="<?php echo $courses['IDCourses'] ?>"><?php echo $courses['NombreCourses'];  ?></option>                                                    
-                                                                <?php   }   ?>
-                                                        </select>
-                                                    </div>
-                                            </div>
-                                                <br/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Imagen del certificado:</label>
-                                        <input  type="file" class="form-control" name="foto">
-                                    </div>
-                                </div><br/>
-                                        </div>
-                                        <div class="modal-footer">
-                                                <button class="btn btn-success" type="submit">Agregar</button>
-                                        </div> 
-                                    </form>
-                                </div>
-                            </div>
-                            </div>
-                        </section>
-                    </aside>
-                </div>
+                
+            
                 <div class="row">
             <div class="col-lg-12">
                 <section class="panel">
