@@ -19,7 +19,7 @@
 <meta name="description" content="Pragot | Campus Virtual">
 <meta name="author" content="Pragot | Campus Virtual">
 <meta name="keyword" content="Pragot | Campus Virtual">
-<?php include ("common/titleCliente.php"); ?>
+
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
