@@ -50,7 +50,7 @@ VALUES ('$student_id','$registro_id','$foto', $idCourses)";
         $resultado = $conexion->query($query);
 
 if($resultado){
-    header ("Location: ../matriListaCourses.php");
+    header ("Location: ../certificateUsuario.php?id=".$idUsers);
 }
 else{
     
