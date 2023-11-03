@@ -74,6 +74,15 @@ try {
         throw new Exception("Error al asignar el rol al usuario");
     }
 
+      // creando aca_teacher
+      $query = "INSERT INTO aca_teachers (teacher_code, person_id) 
+      VALUES ('$dni',$person_id)";
+      $resultado = $conexion->query($query);
+  
+      if (!$resultado) {
+          throw new Exception("Error al registrar en aca_teacher");
+      }
+
     // Confirmar la transacción si todas las consultas se ejecutan correctamente
     $conexion->commit();
     header ("Location: ../usersDocentes.php");
