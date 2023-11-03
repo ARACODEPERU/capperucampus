@@ -181,7 +181,7 @@
 
                                         <div class="col-md-3">
                                             <label>DNI: *</label>
-                                            <input type="text" class="form-control" name="dni" require="">
+                                            <input type="number" class="form-control" name="dni" require="">
                                         </div>
                                     </div>
                                     <br/>
@@ -192,7 +192,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <label>Teléfono: *</label>
-                                            <input type="text" class="form-control" name="telefono" require="">
+                                            <input type="telephone" class="form-control" name="telefono" require="">
                                         </div>
                                     </div>
                                     <br/>

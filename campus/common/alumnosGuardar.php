@@ -57,12 +57,12 @@ try {
     }
 
     // Obtener el ID del rol DOCENTE
-    $consulta1 = "SELECT r.id role_id FROM roles r JOIN model_has_roles mhr ON mhr.role_id = r.id WHERE r.name = 'Alumno'";
+    $consulta1 = "SELECT r.id role_id FROM roles r WHERE r.name = 'Alumno'";
     $resultado1 = $conexion->query($consulta1);
 
     if ($resultado1) {
         $role_id = $resultado1->fetch_assoc(); // Obtener los datos del resultado
-        $role_id = $role_id['role_id']; // Obtener el valor de la columna 'course_id'
+        $role_id = $role_id['role_id']; // Obtener el valor de la columna 'id'
     } else {
         throw new Exception("Error al obtener el ID del rol");
     }
