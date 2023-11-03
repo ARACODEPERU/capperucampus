@@ -150,12 +150,11 @@
                                 <?php
                                 
                                 $id = $_REQUEST ['id'];
-                                $query = "SELECT *, ce.image Foto, c.description NombreCourses, ca.description CategoriaCourses, ce.id IDCertificate
-                                FROM aca_certificates ce
-                                INNER JOIN aca_courses c ON ce.course_id = c.id inner join aca_students st on st.id = ce.student_id
-                                join people p on p.id = st.person_id join users us on us.person_id = p.id
-                                join aca_category_courses ca on c.category_id = ca.id
-                                WHERE us.id='$id' ";
+                                $query = "SELECT  ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses
+                                FROM users u JOIN people p ON p.id=u.person_id JOIN aca_students stu ON p.id=stu.person_id
+                                JOIN aca_certificates ce ON stu.id=ce.student_id
+                                JOIN aca_courses c ON ce.course_id=c.id join aca_category_courses cat ON cat.id=c.category_id 
+                                WHERE u.id='$id' ";
                                 $resultado = $conexion->query($query);
                                 while($row = $resultado->fetch_assoc()){
                                     ?>
@@ -164,7 +163,7 @@
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                     <td>
-                                        <a title="Eliminar" href="common/certificateEliminar.php?id=<?php echo $row['IDCertificate'];?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
+                                        <a title="Eliminar" href="common/certificateEliminar.php?id=<?php echo $row['IDCertificate']."&user_id=".$id;?>" class="btn btn-danger btn"><i class="fa fa-trash-o "></i></a>
                                     </td>
                                 </tr>
                                 <?php  }  ?>
@@ -179,10 +178,10 @@
                 <div class="row">
                 <?php
                 $id = $_REQUEST ['id'];
-                $query = "SELECT DISTINCT ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses
+                $query = "SELECT ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses
                 FROM users u JOIN people p ON p.id=u.person_id JOIN aca_students stu ON p.id=stu.person_id
-                JOIN aca_certificates ce ON stu.id=ce.student_id JOIN aca_cap_registrations reg ON reg.student_id=stu.id
-                JOIN aca_courses c ON reg.course_id=c.id join aca_category_courses cat ON cat.id=c.category_id 
+                JOIN aca_certificates ce ON stu.id=ce.student_id
+                JOIN aca_courses c ON ce.course_id=c.id join aca_category_courses cat ON cat.id=c.category_id 
                 WHERE u.id='$id'";
                 $resultado = $conexion->query($query);
                 while($row = $resultado->fetch_assoc()){ ?>

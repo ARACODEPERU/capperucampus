@@ -45,8 +45,8 @@ $registro_id;
     }
 
 
-$query = "INSERT INTO aca_certificates(student_id, registration_id, image) 
-VALUES ('$student_id','$registro_id','$foto')";
+$query = "INSERT INTO aca_certificates(student_id, registration_id, image, course_id) 
+VALUES ('$student_id','$registro_id','$foto', $idCourses)";
         $resultado = $conexion->query($query);
 
 if($resultado){
