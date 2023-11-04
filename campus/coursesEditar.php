@@ -62,13 +62,10 @@
         <?php
             $id = $_REQUEST ['id'];
             $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses, c.status Estado,
-            ca.description CategoriaCourses, ca.id categoria_id, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
+            cat.description CategoriaCourses, cat.id categoria_id, u.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
             c.course_day diaCourses, c.course_month mesCourses, c.course_year yearCourses, c.image FotoCourses
-            FROM aca_courses c
-            INNER JOIN users us ON c.teacher_id = us.id
-            join aca_category_courses ca on ca.id = c.category_id
-            join people p on p.id = us.person_id
-            WHERE c.id ='$id'";
+            FROM users u JOIN people p ON p.id=u.person_id JOIN aca_teachers te ON te.person_id=p.id JOIN aca_courses c ON c.teacher_id=te.id
+            JOIN aca_category_courses cat ON cat.id=c.category_id WHERE c.id='$id'";
             $resultado = $conexion->query($consulta);
             while($dato = $resultado->fetch_assoc()){
         ?>     
@@ -100,7 +97,7 @@
                                         <br/>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Categoria: *</label>
+                                                <label>Sector: *</label>
                                                 <select type="text" class="form-control" name="Categoria" require="">
                                                     <option value="<?php echo $dato['categoria_id'] ?>"><?php echo $dato['CategoriaCourses'] ?></option>
                                                     <?php
@@ -121,10 +118,10 @@
                                                         <?php echo $dato['Nombre']; echo " "; echo $dato['ApellidoP']; echo " "; echo $dato['ApellidoM']; ?>
                                                     </option>
                                                     <?php
-                                                        $consulta = "SELECT *, us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
-                                                        FROM model_has_roles mhs join roles r on mhs.role_id = r.id join users us on us.id = mhs.role_id 
-                                                        join people p on p.id = us.person_id
-                                                        where r.name='Docente'";
+                                                        $consulta = "SELECT DISTINCT u.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
+                                                        FROM users u JOIN people p ON p.id=u.person_id JOIN model_has_roles mhr ON u.id=mhr.model_id
+                                                        JOIN roles r ON mhr.role_id=r.id
+                                                        WHERE r.name='Docente'";
                                                         $resultado = $conexion->query($consulta);
                                                         while($docentes = $resultado->fetch_assoc()){
                                                     ?>

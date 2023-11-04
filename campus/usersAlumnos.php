@@ -127,7 +127,7 @@
                                             <a title="Matricular" href="matriUsuario.php?id=<?php echo $alumno['ID'];?>" class="btn btn-info btn"><i class="fa fa-book"></i></a>
                                             <a title="Ver Perfil" href="profile.php?id=<?php echo $alumno['ID'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                             <a title="Editar" href="usersAlumnosEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este Alumno?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
+                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event)"><i class="fa fa-trash-o "></i></a>
                                             
                                         </td>
                                             </tr>
@@ -265,6 +265,33 @@
       
 
     <!-- js placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+            function confirmDelete(event) {
+                            event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
+                            console.log(event.target.href);
+
+                        Swal.fire({
+                        title: '¿En Realidad quieres Eliminar a este Alumno?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'SI',
+                        denyButtonText: `NO`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire('Eliminado!', '', 'success');
+                            setTimeout(() => {
+                                window.location.href = event.target.href; // Continúa con la eliminación
+                            }, 800);
+                            
+                        } else if (result.isDenied) {
+                            Swal.fire('No pasa nada.', '', 'info')
+                        }
+                        });
+                           
+                }
+</script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>

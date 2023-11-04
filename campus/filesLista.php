@@ -164,7 +164,7 @@
                                     <td>
                                       <a target="_blank" href="<?php echo $files['EnlaceFiles']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="filesEditar.php?id=<?php echo $files['IDFiles'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este Archivo?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>" class="btn btn-danger btn" onclick="confirmDelete(event)"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>
@@ -194,6 +194,33 @@
         
         return true; // Permite el envío del formulario si se ha seleccionado una opción válida
     }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+            function confirmDelete(event) {
+                            event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
+                            console.log(event.target.href);
+
+                        Swal.fire({
+                        title: '¿En Realidad quieres borrar esto?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'SI',
+                        denyButtonText: `NO`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire('Eliminado!', '', 'success');
+                            setTimeout(() => {
+                                window.location.href = event.target.href; // Continúa con la eliminación
+                            }, 800);
+                            
+                        } else if (result.isDenied) {
+                            Swal.fire('No pasa nada.', '', 'info')
+                        }
+                        });
+                           
+                }
 </script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>

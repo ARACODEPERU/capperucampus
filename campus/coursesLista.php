@@ -115,7 +115,7 @@
                                     <td>
                                         <a title="Ver" href="viewAlumnoModules.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                         <a title="Editar" href="coursesEditar.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                        <a title="Eliminar" href="common/acadEliminarCourses.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o"></i></a>
+                                        <a title="Eliminar" href="common/acadEliminarCourses.php?id=<?php echo $courses['IDCourses']; ?>" class="btn btn-danger btn" onclick="confirmDelete(event)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                                 <?php  }  ?>
@@ -147,7 +147,7 @@
                                                 <div class="row">
                                                     <input type="hidden"  name="Estado" value="Activo" required >        
                                                     <div class="col-md-6">
-                                                        <label for="">Categoria: *</label>
+                                                        <label for="">Sector: *</label>
                                                         <select type="text" class="form-control" 
                                                                 name="CategoriaCourses">
                                                                 <option>Seleccionar...</option>
@@ -199,7 +199,33 @@
                             </div>
             </div>
                     <!-- modal -->
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+            function confirmDelete(event) {
+                            event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
+                            console.log(event.target.href);
 
+                        Swal.fire({
+                        title: '¿En Realidad quieres borrar esto?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'SI',
+                        denyButtonText: `NO`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire('Eliminado!', '', 'success');
+                            setTimeout(() => {
+                                window.location.href = event.target.href; // Continúa con la eliminación
+                            }, 800);
+                            
+                        } else if (result.isDenied) {
+                            Swal.fire('No pasa nada.', '', 'info')
+                        }
+                        });
+                           
+                }
+</script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
