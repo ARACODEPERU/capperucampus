@@ -169,7 +169,7 @@
                                     <td>
                                       <a target="_blank" href="<?php echo $videos['id'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="videosEditar.php?id=<?php echo $videos['id'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este VIDEO?, recuerda que luego no podrás recuperarlo');"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/acadEliminarVideos.php?id=<?php echo $videos['id'];?>')"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>
@@ -354,6 +354,32 @@
     }
 </script>
     <!-- js placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+            function confirmDelete(event, ruta) {
+                            event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
+
+                        Swal.fire({
+                        title: '¿En Realidad quieres borrar este Video?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'SI',
+                        denyButtonText: `NO`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire('Eliminado!', '', 'success');
+                            setTimeout(() => {
+                                window.location.href = ruta; // Continúa con la eliminación
+                            }, 800);
+                            
+                        } else if (result.isDenied) {
+                            Swal.fire('No pasa nada.', '', 'info')
+                        }
+                        });
+                           
+                }
+</script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>

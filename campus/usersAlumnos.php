@@ -127,7 +127,7 @@
                                             <a title="Matricular" href="matriUsuario.php?id=<?php echo $alumno['ID'];?>" class="btn btn-info btn"><i class="fa fa-book"></i></a>
                                             <a title="Ver Perfil" href="profile.php?id=<?php echo $alumno['ID'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                             <a title="Editar" href="usersAlumnosEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event)"><i class="fa fa-trash-o "></i></a>
+                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>')"><i class="fa fa-trash-o "></i></a>
                                             
                                         </td>
                                             </tr>
@@ -267,12 +267,11 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-            function confirmDelete(event) {
+            function confirmDelete(event, ruta) {
                             event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
-                            console.log(event.target.href);
 
                         Swal.fire({
-                        title: '¿En Realidad quieres Eliminar a este Alumno?',
+                        title: '¿En Realidad quieres Eliminar este Alumno/a?',
                         showDenyButton: true,
                         showCancelButton: true,
                         confirmButtonText: 'SI',
@@ -282,7 +281,7 @@
                         if (result.isConfirmed) {
                             Swal.fire('Eliminado!', '', 'success');
                             setTimeout(() => {
-                                window.location.href = event.target.href; // Continúa con la eliminación
+                                window.location.href = ruta; // Continúa con la eliminación
                             }, 800);
                             
                         } else if (result.isDenied) {

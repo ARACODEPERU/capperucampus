@@ -164,7 +164,7 @@
                                     <td>
                                       <a target="_blank" href="<?php echo $files['EnlaceFiles']; ?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
                                       <a href="filesEditar.php?id=<?php echo $files['IDFiles'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar </a>
-                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>" class="btn btn-danger btn" onclick="confirmDelete(event)"><i class="fa fa-trash-o "></i></a>
+                                      <a href="common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/acadEliminarFiles.php?id=<?php echo $files['IDFiles']."&theme_id=".$id;?>')"><i class="fa fa-trash-o "></i></a>
                                    </td>
                                 </tr>
                                 <?php  }  ?>
@@ -197,12 +197,11 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-            function confirmDelete(event) {
+            function confirmDelete(event, ruta) {
                             event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
-                            console.log(event.target.href);
 
                         Swal.fire({
-                        title: '¿En Realidad quieres borrar esto?',
+                        title: '¿En Realidad quieres borrar este Archivo?',
                         showDenyButton: true,
                         showCancelButton: true,
                         confirmButtonText: 'SI',
@@ -212,7 +211,7 @@
                         if (result.isConfirmed) {
                             Swal.fire('Eliminado!', '', 'success');
                             setTimeout(() => {
-                                window.location.href = event.target.href; // Continúa con la eliminación
+                                window.location.href = ruta; // Continúa con la eliminación
                             }, 800);
                             
                         } else if (result.isDenied) {
