@@ -12,47 +12,47 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pragot | Campus Virtual">
-<meta name="author" content="Pragot  | Campus Virtual">
-<meta name="keyword" content="Pragot  | Campus Virtual">
-<link rel="shortcut icon" type="image/x-icon" href="../img/clients/pragoticon.png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Campus Virtual">
+        <meta name="author" content="Aracode Smart Solution | Campus Virtual">
+        <meta name="keyword" content="Aracode Smart Solution | Campus Virtual">
+        <link rel="shortcut icon" type="image/x-icon" href="../img/clients/icon-cap.png">
 
-<title>Pragot | Campus Virtual</title>
+        <title>CAP PERÚ | Campus Virtual</title>
 
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-reset.css" rel="stylesheet">
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
 
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-reset.css" rel="stylesheet">
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-<link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+        <!--right slidebar-->
+        <link href="css/slidebars.css" rel="stylesheet">
 
-<!--right slidebar-->
-<link href="css/slidebars.css" rel="stylesheet">
+        <!--LightBox-->
+        <link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
+        <script src="js/lightbox-plus-jquery.min.js"  ></script>
 
-<!--LightBox-->
-<link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
-<script src="js/lightbox-plus-jquery.min.js"></script>
+        <!-- Custom styles for this template -->
 
-<!-- Custom styles for this template -->
+        <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
 
-<link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/style-responsive.css" rel="stylesheet" />
+        <!-- SWEET ALERT 2 -->	
+        <!-- https://sweetalert2.github.io/ -->
+        <script src="js/plugins/sweetalert2.all.js"></script>
 
-	<!-- SWEET ALERT 2 -->	
-	<!-- https://sweetalert2.github.io/ -->
-    <script src="js/plugins/sweetalert2.all.js"></script>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
-</head>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
 <body>
     <section id="container">

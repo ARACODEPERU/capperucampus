@@ -4,8 +4,8 @@
 <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pragot | Campus Virtual</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/clients/pragoticon.png">
+    <title>CAP PERÚ | Campus Virtual</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/clients/icon-cap.png">
     
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.min.css">
@@ -26,7 +26,7 @@
                 <div class="bg"></div>
                 <div class="info-holder" style="margin-top: -50px;">
                 <center>
-                    <img style="width: 65%; text-align: center;" src="img/clients/pragot-logo.png" alt="Pragot">
+                    <img style="width: 65%; text-align: center;" src="img/clients/logo-cap.png" alt="CAP PERÚ">
                     <br/><br/>
                     <h3 style="text-align: center; padding: 0px;" >
                     Bienvenidos a nuestro <br/> campus virtual
@@ -69,7 +69,7 @@
                             <!-- PRAGOT-->
                         <div class="other-links">
                             <span>Siguenos en:</span>
-                            <a href="https://web.facebook.com/PRAGOTConsultores" target="_banck">Facebook</a>
+                            <a href="https://www.facebook.com/capperuoficial" target="_banck">Facebook</a>
                         </div>
                     </div>
                 </div>

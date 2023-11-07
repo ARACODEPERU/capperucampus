@@ -12,41 +12,45 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Habicom | Campus Virtual">
-    <meta name="author" content="Habicom | Campus Virtual">
-    <meta name="keyword" content="Habicom | Campus Virtual">
-    <link rel="shortcut icon" type="image/x-icon" href="../img/clients/pragoticon.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Campus Virtual">
+        <meta name="author" content="Aracode Smart Solution | Campus Virtual">
+        <meta name="keyword" content="Aracode Smart Solution | Campus Virtual">
+        <link rel="shortcut icon" type="image/x-icon" href="../img/clients/icon-cap.png">
 
-    <title>Pragot | Campus Virtual</title>
+        <title>CAP PERÚ | Campus Virtual</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-reset.css" rel="stylesheet">
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
 
-    <!--right slidebar-->
-    <link href="css/slidebars.css" rel="stylesheet">
+        <!--right slidebar-->
+        <link href="css/slidebars.css" rel="stylesheet">
 
-    <!--LightBox-->
-    <link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
-    <script src="js/lightbox-plus-jquery.min.js"  ></script>
+        <!--LightBox-->
+        <link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
+        <script src="js/lightbox-plus-jquery.min.js"  ></script>
 
-    <!-- Custom styles for this template -->
+        <!-- Custom styles for this template -->
 
-    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+        <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+        <!-- SWEET ALERT 2 -->	
+        <!-- https://sweetalert2.github.io/ -->
+        <script src="js/plugins/sweetalert2.all.js"></script>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
     </head>
 
     <body>
@@ -78,7 +82,7 @@
                                 <table class="table table-striped table-advance table-hover">
                                     <thead>
                                         <tr>
-                                            <th><i class="fa fa-user"></i> Foto</th>
+                                            <th><i class="fa fa-photo"></i> Foto</th>
                                             <th><i class="fa fa-user"></i> Docente</th>
                                             <th><i class="fa fa-bookmark"></i> DNI</th>
                                             <th><i class="fa fa-envelope"></i> Email</th>
@@ -107,9 +111,15 @@
                                             <td><?php echo $alumno['Telefono']; ?></td>
                                             <td><span class="label label-success label-mini"><?php echo ($alumno['Activo']="Activo"); ?></span></td>
                                             <td>
-                                                <a href="profile.php?id=<?php echo $alumno['ID'];?>" title="Ver Docente" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
-                                                <a href="usersDocentesEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i> Editar</a>
-                                                <a href="common/usersEliminarDocente.php?ID=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/usersEliminarDocente.php?ID=<?php echo $alumno['ID'];?>')"><i class="fa fa-trash-o "></i></a>
+                                                <a href="profile.php?id=<?php echo $alumno['ID'];?>" title="Ver Docente" class="btn btn-success btn">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="usersDocentesEditar.php?id=<?php echo $alumno['ID'];?>" title="Editar" class="btn btn-primary btn">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="common/usersEliminarDocente.php?ID=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/usersEliminarDocente.php?ID=<?php echo $alumno['ID'];?>')">
+                                                    <i class="fa fa-trash-o "></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php  }  ?>
@@ -396,31 +406,31 @@
         </section>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-            function confirmDelete(event, ruta) {
+    <script>
+                function confirmDelete(event, ruta) {
                             event.preventDefault(); // Evita que se siga el enlace de eliminación de inmediato
 
-                        Swal.fire({
-                        title: '¿En Realidad quieres eliminar al Docente?',
-                        showDenyButton: true,
-                        showCancelButton: true,
-                        confirmButtonText: 'SI',
-                        denyButtonText: `NO`,
-                        }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            Swal.fire('Eliminado!', '', 'success');
-                            setTimeout(() => {
-                                window.location.href = ruta; // Continúa con la eliminación
-                            }, 800);
+                            Swal.fire({
+                            title: '¿En Realidad quieres eliminar al Docente?',
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: 'SI',
+                            denyButtonText: `NO`,
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                Swal.fire('Eliminado!', '', 'success');
+                                setTimeout(() => {
+                                    window.location.href = ruta; // Continúa con la eliminación
+                                }, 800);
+                                
+                            } else if (result.isDenied) {
+                                Swal.fire('No pasa nada.', '', 'info')
+                            }
+                            });
                             
-                        } else if (result.isDenied) {
-                            Swal.fire('No pasa nada.', '', 'info')
-                        }
-                        });
-                           
-                }
-</script>
+                    }
+    </script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>

@@ -14,48 +14,47 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Habicom | Campus Virtual">
-<meta name="author" content="Habicom | Campus Virtual">
-<meta name="keyword" content="Habicom | Campus Virtual">
-    <link rel="shortcut icon" type="image/x-icon" href="../img/clients/pragoticon.png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Campus Virtual">
+        <meta name="author" content="Aracode Smart Solution | Campus Virtual">
+        <meta name="keyword" content="Aracode Smart Solution | Campus Virtual">
+        <link rel="shortcut icon" type="image/x-icon" href="../img/clients/icon-cap.png">
 
-<title>Pragot | Campus Virtual</title>
+        <title>CAP PERÚ | Campus Virtual</title>
 
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-reset.css" rel="stylesheet">
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-<link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-reset.css" rel="stylesheet">
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
 
-<!--right slidebar-->
-<link href="css/slidebars.css" rel="stylesheet">
+        <!--right slidebar-->
+        <link href="css/slidebars.css" rel="stylesheet">
 
-<!--LightBox-->
-<link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
-<script src="js/lightbox-plus-jquery.min.js"  ></script>
+        <!--LightBox-->
+        <link rel="stylesheet" type="text/css" href="css/lightbox.min.css" >
+        <script src="js/lightbox-plus-jquery.min.js"  ></script>
 
-<!-- Custom styles for this template -->
+        <!-- Custom styles for this template -->
 
-<link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/style-responsive.css" rel="stylesheet" />
+        <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
 
-	<!-- SWEET ALERT 2 -->	
-	<!-- https://sweetalert2.github.io/ -->
-    <script src="js/plugins/sweetalert2.all.js"></script>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
+        <!-- SWEET ALERT 2 -->	
+        <!-- https://sweetalert2.github.io/ -->
+        <script src="js/plugins/sweetalert2.all.js"></script>
 
-
-</head>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
 <body>
     <section id="container">
@@ -84,18 +83,18 @@
                                 </div> 
                                 <div><a class="btn btn-success" data-toggle="modal" href="#myModal" style="display: inline-block; float: right; margin-top: -15px;"> <b><i class="fa fa-user" style="display: inline-block; margin-top: 5px;"></i> Agregar Alumno + </b> </a></div>
                             </header>
-                                <table id="example" class="table table-striped table-advance table-hover table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th><i class="fa fa-user"></i> Foto</th>
-                                                <th><i class="fa fa-user"></i> Alumno</th>
-                                                <th><i class="fa fa-bookmark"></i> DNI</th>
-                                                <th><i class="fa fa-envelope"></i> Email</th>
-                                                <th><i class="fa fa-phone"></i> Teléfono</th>
-                                                <th><i class=" fa fa-edit"></i> Acción</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                            <table id="example" class="table table-striped table-advance table-hover table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-photo"></i> Foto</th>
+                                        <th><i class="fa fa-user"></i> Alumno</th>
+                                        <th><i class="fa fa-bookmark"></i> DNI</th>
+                                        <th><i class="fa fa-envelope"></i> Email</th>
+                                        <th><i class="fa fa-phone"></i> Teléfono</th>
+                                        <th><i class=" fa fa-edit"></i> Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     <?php 
                                         $consulta = "SELECT *, us.avatar Foto, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM, p.number DNI, p.email Email, p.telephone Telefono, us.id ID, status Estado 
                                                         FROM model_has_roles mhs join roles r on mhs.role_id = r.id 
@@ -105,36 +104,35 @@
                                         $resultado = $conexion->query($consulta);
                                         while($alumno= $resultado->fetch_assoc()){
                                     ?> 
-                                        <tr>
-                                            <td>
-                                                <img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $alumno['Foto']; ?>"/>
-                                            </td>
-                                                
-                                        <td style="width: 23%;">
-                                            <?php echo $alumno['Nombre']." ".$alumno['ApellidoP']." ".$alumno['ApellidoM']; ?><br/>
-                                            <span class="label label-success label-mini"><?php
-                                                                                        if ($alumno['Estado'] == 1) {
-                                                                                            echo "Activo";
-                                                                                        } else {
-                                                                                            echo "Inactivo";
-                                                                                        }
-                                                                                        ?></span>
-                                        </td>
-                                        <td style="width: 9%;"><?php echo $alumno['DNI']; ?></td>
-                                        <td style="width: 16%;"><?php echo $alumno['Email']; ?></td>
-                                        <td style="width: 9%;"><?php echo $alumno['Telefono']; ?></td>
+                                    <tr>
                                         <td>
-                                            <a title="Matricular" href="matriUsuario.php?id=<?php echo $alumno['ID'];?>" class="btn btn-info btn"><i class="fa fa-book"></i></a>
-                                            <a title="Ver Perfil" href="profile.php?id=<?php echo $alumno['ID'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
-                                            <a title="Editar" href="usersAlumnosEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
-                                            <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>')"><i class="fa fa-trash-o "></i></a>
-                                            
+                                            <img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $alumno['Foto']; ?>"/>
                                         </td>
-                                            </tr>
+                                            
+                                    <td style="width: 23%;">
+                                        <?php echo $alumno['Nombre']." ".$alumno['ApellidoP']." ".$alumno['ApellidoM']; ?><br/>
+                                        <span class="label label-success label-mini"><?php
+                                                                                    if ($alumno['Estado'] == 1) {
+                                                                                        echo "Activo";
+                                                                                    } else {
+                                                                                        echo "Inactivo";
+                                                                                    }
+                                                                                    ?></span>
+                                    </td>
+                                    <td style="width: 9%;"><?php echo $alumno['DNI']; ?></td>
+                                    <td style="width: 16%;"><?php echo $alumno['Email']; ?></td>
+                                    <td style="width: 9%;"><?php echo $alumno['Telefono']; ?></td>
+                                    <td>
+                                        <a title="Matricular" href="matriUsuario.php?id=<?php echo $alumno['ID'];?>" class="btn btn-info btn"><i class="fa fa-book"></i></a>
+                                        <a title="Ver Perfil" href="profile.php?id=<?php echo $alumno['ID'];?>" class="btn btn-success btn"><i class="fa fa-eye"></i></a>
+                                        <a title="Editar" href="usersAlumnosEditar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-primary btn"><i class="fa fa-pencil"></i></a>
+                                        <a title="Eliminar" href="common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>" class="btn btn-danger btn" onclick="confirmDelete(event, 'common/alumnosEliminar.php?id=<?php echo $alumno['ID'];?>')"><i class="fa fa-trash-o "></i></a>
+                                        
+                                    </td>
+                                        </tr>
                                     <?php   } ?>
-                                        </tbody>
-                                </table>
-                                
+                                </tbody>
+                            </table>
                         </section>
                     </div>
                 </div>
@@ -310,11 +308,11 @@
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>-->
     <script src="datatable/jquery.dataTable.min.js"></script>
     
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
     
 
   </body>
