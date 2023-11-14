@@ -14,12 +14,20 @@ $email = $_POST['email'];
 $departamento = $_POST['departamento'];
 $provincia = $_POST['provincia'];
 $distrito = $_POST['distrito'];
-$foto=$_FILES['foto']["name"];
+$Foto=generarStringAleatorio(10);
+
+$archivo = $_FILES['foto'];
+
+// Obtener la información del archivo
+$infoArchivo = pathinfo($archivo["name"]);
+// Obtener la extensión del archivo
+$extension = $infoArchivo["extension"];
+$Foto = $Foto .'.'.$extension;
 
 
 
 if(isset($_FILES['foto'])){
-    move_uploaded_file($_FILES['foto']["tmp_name"],"../../img/users/".$_FILES['foto']["name"]
+    move_uploaded_file($_FILES['foto']["tmp_name"],"../../img/users/".$Foto
     );   
 }// Iniciar la transacción
 $conexion->begin_transaction();
@@ -27,7 +35,7 @@ $conexion->begin_transaction();
 try {
     // Crear el usuario
     $query = "INSERT INTO users (name, password, status, email, avatar) 
-    VALUES ('$nombres', '$dni', 1,'$email','$foto')";
+    VALUES ('$nombres', '$dni', 1,'$email','$Foto')";
     $resultado = $conexion->query($query);
 
     if ($resultado) {
@@ -97,4 +105,15 @@ try {
 
 
 
+function generarStringAleatorio($longitud) {
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $cadenaAleatoria = '';
+
+    for ($i = 0; $i < $longitud; $i++) {
+        $indiceAleatorio = mt_rand(0, strlen($caracteres) - 1);
+        $cadenaAleatoria .= $caracteres[$indiceAleatorio];
+    }
+
+    return $cadenaAleatoria;
+}
 ?>
