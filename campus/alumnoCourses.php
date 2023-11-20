@@ -91,7 +91,7 @@
                             ?>
                             <li>
                               <figure>
-                                  <a href="alumnoModulesVer.php?id=<?php echo $row['IDCourses'];?>"><img src="../img/courses/<?php echo $row['FotoCourses']; ?>"></a>
+                                  <a href="alumnoModulesVer.php?id=<?php echo $row['IDCourses'];?>"><img src="<?php echo $row['FotoCourses']; ?>"></a>
                                   <figcaption>
                                       <h3><?php echo $row['NombreCourses']; ?></h3>
                                       <?php echo $row['CategoriaCourses']; ?>

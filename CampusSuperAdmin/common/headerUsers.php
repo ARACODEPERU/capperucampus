@@ -276,7 +276,7 @@
               <!-- user login dropdown start-->
               <li class="dropdown">
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                      <img width="40px;" alt="" src="../img/users/<?php echo $_SESSION['Foto']; ?>">
+                      <img width="40px;" alt="" src="<?php echo $_SESSION['Foto']; ?>">
                       <span class="username"> <?php echo $_SESSION['Nombre']; echo " "; echo $_SESSION['ApellidoP']; echo " "; echo $_SESSION['ApellidoM'];?></span>
                       <b class="caret"></b>
                   </a>

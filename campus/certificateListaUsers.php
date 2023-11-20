@@ -117,7 +117,7 @@
                                 while($value= $resultado->fetch_assoc()){
                             ?> 
                                     <tr>
-                                        <td><img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $value['Foto']; ?>"/></td>
+                                        <td><img style="width: 50px; height: 50px; border-radius: 50%;" src="<?php echo $value['Foto']; ?>"/></td>
                                         
                                         <td><?php echo $value['Nombre']; echo " "; echo $value['ApellidoP']; echo " "; echo $value['ApellidoM'];  ?></td>
                                         <td><?php echo $value['DNI']; ?></td>

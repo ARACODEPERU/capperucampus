@@ -160,7 +160,7 @@ include ("common/headerUsers.php");
                                                 <label for="">Foto:</label>
                                                     <?php if($txtFoto!="") { ?>
                                                         <br/>
-                                                        <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="../../img/users/<?php  echo $txtFoto; ?>  " alt="">
+                                                        <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="<?php  echo $txtFoto; ?>  " alt="">
                                                     <?php  }  ?>
                                                         <input  type="file" class="form-control" accept="image/*" name="txtFoto" value="<?php echo $txtFoto; ?>" placeholder="" id="txtFoto" require="">
                                                         <br/>
@@ -240,7 +240,7 @@ include ("common/headerUsers.php");
                                 foreach($listaUsuarios as $usuario) {  
                             ?>
                             <tr>
-                                <td><img  width="50px;" height="50px;" src="../img/users/<?php echo $usuario['Foto']; ?>"/></td>
+                                <td><img  width="50px;" height="50px;" src="<?php echo $usuario['Foto']; ?>"/></td>
                                 <td><?php echo $usuario['Nombre']; ?></td>
                                 <td class="hidden-phone"><?php echo $usuario['ApellidoP']; ?></td>
                                 <td><?php echo $usuario['ApellidoM']; ?></td>

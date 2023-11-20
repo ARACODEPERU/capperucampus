@@ -15,7 +15,6 @@ $departamento = $_POST['departamento'];
 $provincia = $_POST['provincia'];
 $distrito = $_POST['distrito'];
 $Foto=generarStringAleatorio(10);
-
 $archivo = $_FILES['foto'];
 
 // Obtener la información del archivo
@@ -24,6 +23,12 @@ $infoArchivo = pathinfo($archivo["name"]);
 $extension = $infoArchivo["extension"];
 $Foto = $Foto .'.'.$extension;
 
+//variables env
+$envFile = $_SERVER['DOCUMENT_ROOT'] . '/.env';
+$envVars = parse_ini_file($envFile);
+$app_url = $envVars['APP_URL'];
+
+
 
 
 if(isset($_FILES['foto'])){
@@ -31,7 +36,7 @@ if(isset($_FILES['foto'])){
     );   
 }// Iniciar la transacción
 $conexion->begin_transaction();
-
+$Foto = $app_url."/img/users/".$Foto;
 try {
     // Crear el usuario
     $query = "INSERT INTO users (name, password, status, email, avatar) 
@@ -46,8 +51,8 @@ try {
 
     // Crear la persona
     $query = "INSERT INTO people (names, father_lastname, mother_lastname, 
-    number, email, telephone, ocupacion, presentacion, ubigeo) 
-    VALUES ('$nombres','$apellidoP','$apellidoM','$dni','$email','$telefono','$ocupacion','Aqui...', '150101')";
+    number, email, telephone, ocupacion, presentacion, ubigeo, image) 
+    VALUES ('$nombres','$apellidoP','$apellidoM','$dni','$email','$telefono','$ocupacion','Aqui...', '150101', '$Foto')";
     $resultado = $conexion->query($query);
 
     if ($resultado) {

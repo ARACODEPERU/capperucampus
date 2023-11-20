@@ -20,7 +20,7 @@ include ("common/headerAcademico.php");
             <aside class="profile-nav col-lg-3">
                 <section class="panel">
                     <div class="user-heading round">
-                        <a href="#"><img  src="../img/courses/<?php echo $courses['FotoCourses'];?>" alt=""></a>
+                        <a href="#"><img  src="<?php echo $courses['FotoCourses'];?>" alt=""></a>
                         <h1><?php  echo $courses['NombreCourses'];  ?></h1>
                         
                     </div>
@@ -86,7 +86,7 @@ include ("common/headerAcademico.php");
                                                 <?php if($txtFoto!="") {   ?>
                                             <br/>
                                                 <img class="img-thumbnail rounded mx-auto d-block" 
-                                                width="80px"  src="../../img/users/<?php  echo $txtFoto; ?>" alt="">
+                                                width="80px"  src="<?php  echo $txtFoto; ?>" alt="">
                                                 <br/><br/>
                                                  <?php  }  ?>
                                             <input  type="file" class="form-control" accept="image/*" name="txtFoto" value="<?php echo $txtFoto; ?>" placeholder="" id="txtFoto" require="">

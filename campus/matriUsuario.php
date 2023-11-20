@@ -74,7 +74,7 @@
                             <div class="col-md-6">
                                 <div class="user-heading round">
                                     <a data-toggle="modal" href="#myModal1">
-                                        <img  src="../img/users/<?php echo $user['Foto']; ?>" >
+                                        <img  src="<?php echo $user['Foto']; ?>" >
                                     </a>
                                     <h1><?php  echo $user['Nombre'];?></h1>
                                 </div>
@@ -185,7 +185,7 @@
                                 while($row = $resultado->fetch_assoc()){
                                 ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="../img/courses/<?php echo $row['FotoCourses']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['FotoCourses']; ?>"/></td>
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                     <td>

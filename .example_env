@@ -2,3 +2,4 @@ DB_LOCATION=localhost
 DB_NAME=base-app
 DB_USERNAME=root
 DB_PASSWORD=
+APP_URL=

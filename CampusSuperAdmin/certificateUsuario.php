@@ -67,7 +67,7 @@ include ("common/headerAcademico.php");
                                                     <?php if($txtFoto!="") {   ?>
                                                     <br/>
                                                         <img class="img-thumbnail rounded mx-auto d-block" 
-                                                                width="80px"  src="../../img/certificate/<?php  echo $txtFoto; ?>" alt="">
+                                                                width="80px"  src="<?php  echo $txtFoto; ?>" alt="">
                                                         <br/><br/>
                                                     <?php  }  ?>
                                                         <input  type="file" class="form-control" accept="image/*" name="txtFoto" value="<?php echo $txtFoto; ?>" placeholder="" id="txtFoto" require="">
@@ -108,7 +108,7 @@ include ("common/headerAcademico.php");
                                 while($row = $resultado->fetch_assoc()){
                                     ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="../img/courses/<?php echo $row['FotoCourses']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['FotoCourses']; ?>"/></td>
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                 </tr>
@@ -129,8 +129,8 @@ include ("common/headerAcademico.php");
                 $resultado = $conexion->query($query);
                 while($row = $resultado->fetch_assoc()){ ?>
                     <div class="col-md-6">
-                        <a href="../img/certificate/<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                            <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                        <a href="<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
+                            <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
                         </a>
                     </div>
                 <?php  }  ?>

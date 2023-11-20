@@ -74,7 +74,7 @@ include ("common/headerAcademico.php");
                                     ?>
                                 <tr>
                                     <td>
-                                        <img  width="50px;" height="50px;" src="../img/users/<?php echo $row['Foto']; ?>"/></td>
+                                        <img  width="50px;" height="50px;" src="<?php echo $row['Foto']; ?>"/></td>
                                     <td><?php echo $row['ApellidoP']; echo " "; 
                                             echo $row['ApellidoM']; echo " ";
                                             echo $row['Nombre']; ?>

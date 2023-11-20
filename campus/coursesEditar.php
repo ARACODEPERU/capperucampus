@@ -227,8 +227,8 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <img class="img-thumbnail" width="100%" 
-                                                    src="../img/courses/<?php echo $dato['FotoCourses'];?>">
-                                                <input  type="file" class="form-control" name="foto" require="">
+                                                    src="<?php echo $dato['FotoCourses'];?>">
+                                                <input  type="file" class="form-control" name="foto" require="" enctype="multipart/form-data">
                                                 <br/>
                                             </div>
                                         </div>        

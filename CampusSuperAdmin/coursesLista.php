@@ -67,7 +67,7 @@ include ("common/headerAcademico.php");
                                                     <?php if($txtFoto!="") {   ?>
                                                     <br/>
                                                         <img class="img-thumbnail rounded mx-auto d-block" 
-                                                                width="80px"  src="../../img/users/<?php  echo $txtFoto; ?>" alt="">
+                                                                width="80px"  src="<?php  echo $txtFoto; ?>" alt="">
                                                         <br/><br/>
                                                     <?php  }  ?>
                                                         <input  type="file" class="form-control" accept="image/*" name="txtFoto" value="<?php echo $txtFoto; ?>" placeholder="" id="txtFoto" require="">
@@ -118,7 +118,7 @@ include ("common/headerAcademico.php");
                                 $listaCourses=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 foreach($listaCourses as $courses) {  ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="../img/courses/<?php echo $courses['FotoCourses']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $courses['FotoCourses']; ?>"/></td>
                                     <td><?php echo $courses['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $courses['CategoriaCourses']; ?></td>
                                     <td><span class="label label-success label-mini">
@@ -288,7 +288,7 @@ include ("common/headerAcademico.php");
 
     <?php if($txtFoto!="") {   ?>
     <br/>
-    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="../img/users/<?php  echo $txtFoto; ?>  " alt="">
+    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="<?php  echo $txtFoto; ?>  " alt="">
     <br/><br/>
 
     <?php  }  ?>

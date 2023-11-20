@@ -45,7 +45,7 @@ include ("common/headerAcademico.php");
                                     $listaUsuarios=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     foreach($listaUsuarios as $usuario) {  ?>
                               <tr>
-                    <td><img  width="50px;" height="50px;" src="../img/users/<?php echo $usuario['Foto']; ?>"/></td>
+                    <td><img  width="50px;" height="50px;" src="<?php echo $usuario['Foto']; ?>"/></td>
                                   <td><?php echo $usuario['ApellidoP']; echo " "; 
                                             echo $usuario['ApellidoM']; echo " ";
                                             echo $usuario['Nombre']; ?>

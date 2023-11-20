@@ -15,7 +15,7 @@
             ?>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img width="40px;" alt="" src="../img/users/<?php echo $alumno['Foto']; ?>">
+                    <img width="40px;" alt="" src="<?php echo $alumno['Foto']; ?>">
                     <span class="username"> <?php echo $alumno['Nombre']; echo " "; echo $alumno['ApellidoP']; echo " "; echo $alumno['ApellidoM'];?></span>
                     <b class="caret"></b>
                 </a>

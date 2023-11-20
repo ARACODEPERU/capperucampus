@@ -17,6 +17,11 @@ $infoArchivo = pathinfo($archivo["name"]);
 $extension = $infoArchivo["extension"];
 $Foto = $Foto .'.'.$extension;
 
+//variables env para url
+$envFile = $_SERVER['DOCUMENT_ROOT'] . '/.env';
+$envVars = parse_ini_file($envFile);
+$app_url = $envVars['APP_URL'];
+
 if(isset($_FILES['foto'])){
     move_uploaded_file($_FILES['foto']["tmp_name"],"../../img/courses/".$Foto
     );   
@@ -34,7 +39,8 @@ if ($resultado1) {
     throw new Exception("Error al obtener el ID del rol");
 }
 
-
+// guardando con ruta completa
+$Foto = $app_url."/img/courses/".$Foto;
 
 $query = "INSERT INTO aca_courses(status, description, category_id, teacher_id, image) 
 VALUES (1,'$Nombre','$Categoria','$teacher_id','$Foto')";

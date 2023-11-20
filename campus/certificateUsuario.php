@@ -159,7 +159,7 @@
                                 while($row = $resultado->fetch_assoc()){
                                     ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="../img/certificate/<?php echo $row['Foto']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['Foto']; ?>"/></td>
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                     <td>
@@ -186,8 +186,8 @@
                 $resultado = $conexion->query($query);
                 while($row = $resultado->fetch_assoc()){ ?>
                     <div class="col-md-6">
-                        <a href="../img/certificate/<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                            <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                        <a href="<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
+                            <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
                         </a>
                     </div>
                               <!-- Modal -->
@@ -199,7 +199,7 @@
                                               <h4 class="modal-title">¡Felicitaciones!</h4>
                                           </div>
                                           <div class="modal-body">
-                                              <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                                              <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
                                           </div>
                                           <div class="modal-footer">
                                               <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>

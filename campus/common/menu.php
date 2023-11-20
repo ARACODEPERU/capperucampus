@@ -21,7 +21,7 @@
                     <ul class="nav pull-right top-menu">
                         <li class="dropdown" style="padding-bottom:5px;">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="padding: 5px;">
-                                <img style="width: 50px; height: 50px; border-radius: 50%;" alt="img" src="../img/users/<?php echo $user['avatar']; ?>">
+                                <img style="width: 50px; height: 50px; border-radius: 50%;" alt="img" src="<?php echo $user['avatar']; ?>">
                                 &nbsp;
                                 <span class="username" style="font-size: 14px;"> <?php echo $user['names']; ?></span>
                                 <br/>&nbsp;
@@ -57,7 +57,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="padding: 5px;">
                         <div class="row">
                             <div class="col-md-2">
-                                <img style="width: 50px; height: 50px; border-radius: 50%;" alt="img" src="../img/users/<?php echo $user['avatar']; ?>">
+                                <img style="width: 50px; height: 50px; border-radius: 50%;" alt="img" src="<?php echo $user['avatar']; ?>">
                                 
                             </div>
                             <div class="col-md-8">&nbsp;

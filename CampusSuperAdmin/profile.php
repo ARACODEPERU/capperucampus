@@ -21,7 +21,7 @@ foreach($listaUsuarios as $usuario) {  ?>
                       <section class="panel">
                           <div class="user-heading round">
                               <a href="#">
-                                  <img  src="../img/users/<?php echo $usuario['Foto']; ?>" alt="">
+                                  <img  src="<?php echo $usuario['Foto']; ?>" alt="">
                               </a>
                               <h1><?php  echo $usuario['Nombre']; echo " "; echo $usuario['ApellidoP']; echo " "; echo $usuario['ApellidoM']; ?></h1>
                               <p><?php echo $usuario['Email']; ?></p>
@@ -180,7 +180,7 @@ foreach($listaUsuarios as $usuario) {  ?>
 
     <?php if($txtFoto!="") {   ?>
     <br/>
-    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="../img/users/<?php  echo $txtFoto; ?>  " alt="">
+    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="<?php  echo $txtFoto; ?>  " alt="">
     <br/><br/>
 
     <?php  }  ?>

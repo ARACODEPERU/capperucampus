@@ -86,8 +86,8 @@
                                     while($row = $resultado->fetch_assoc()){ 
                                 ?>
                                 <div class="col-md-4" style="padding: 10px;">
-                                    <a href="../img/certificate/<?php echo $row['image']; ?>" data-lightbox="mygallery" >
-                                        <img  width="100%;" src="../img/certificate/<?php echo $row['image']; ?>"/>
+                                    <a href="<?php echo $row['image']; ?>" data-lightbox="mygallery" >
+                                        <img  width="100%;" src="<?php echo $row['image']; ?>"/>
                                     </a>
                                 </div>
                                 <?php  }  ?>

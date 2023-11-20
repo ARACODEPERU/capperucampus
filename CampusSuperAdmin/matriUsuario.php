@@ -92,7 +92,7 @@ include ("common/headerAcademico.php");
                                 $listaCourses=$sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 foreach($listaCourses as $courses) {*/  ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="../img/courses/<?php echo $row['FotoCourses']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['FotoCourses']; ?>"/></td>
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                     <td><span class="label label-success label-mini">

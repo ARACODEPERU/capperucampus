@@ -104,7 +104,7 @@
                                             while($alumno = $resultado->fetch_assoc()){
                                         ?> 
                                         <tr>
-                                            <td><img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $alumno['Foto']; ?>"/></td>
+                                            <td><img style="width: 50px; height: 50px; border-radius: 50%;" src="<?php echo $alumno['Foto']; ?>"/></td>
                                             <td><?php echo $alumno['Nombre']; echo " "; echo $alumno['ApellidoP']; echo " "; echo $alumno['ApellidoM'];  ?></td>
                                             <td><?php echo $alumno['DNI']; ?></td>
                                             <td><?php echo $alumno['Email']; ?></td>
@@ -161,7 +161,7 @@
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-4" style="text-align: center;">
-                                            <img  width="100%" src="../img/users/<?php echo $alumno['Foto']; ?>" alt="">
+                                            <img  width="100%" src="<?php echo $alumno['Foto']; ?>" alt="">
                                         </div>
                                         <div class="form-group col-md-8"><br/>
                                             <input type="file" class="form-control" id="exampleInputFile" aria-describedby="fileHelp"  name="foto">

@@ -56,7 +56,7 @@ include ("common/conexion.php");
 
             if($tmpFoto!=""){
 
-                move_uploaded_file($tmpFoto,"../img/courses/".$nombreArchivo);
+                move_uploaded_file($tmpFoto,"../img/courses/<".$nombreArchivo);
                 
             }
 

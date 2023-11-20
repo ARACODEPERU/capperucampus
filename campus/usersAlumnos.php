@@ -106,7 +106,7 @@
                                     ?> 
                                     <tr>
                                         <td>
-                                            <img style="width: 50px; height: 50px; border-radius: 50%;" src="../img/users/<?php echo $alumno['Foto']; ?>"/>
+                                            <img style="width: 50px; height: 50px; border-radius: 50%;" src="<?php echo $alumno['Foto']; ?>"/>
                                         </td>
                                             
                                     <td style="width: 23%;">

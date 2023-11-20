@@ -89,7 +89,7 @@
                                             <b class="label label-success label-mini" style="position: relative; top: 50px; left: 60px;"><?php echo $user['Estado']; ?></b>
                                             <br>
                                             <a data-toggle="modal" href="#myModal1">
-                                                <img style="background: red;"  src="../img/users/<?php echo $user['avatar']; ?>" >
+                                                <img style="background: red;"  src="<?php echo $user['avatar']; ?>" >
                                             </a>
                                             <br>
                                             <b style="font-size: 18px;"><?php  echo $user['names']; ?></b>
@@ -437,8 +437,8 @@
                                 while($row = $resultado->fetch_assoc()){ 
                             ?>
                             <div class="col-md-4" style="padding: 10px;">
-                                <a href="../img/certificate/<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                                    <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                                <a href="<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
+                                    <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
                                 </a>
                             </div>
                             <?php  } ?>
@@ -486,7 +486,7 @@
                             <br/>
                             <div class="row">
                                 <div class="col-md-4" style="text-align: center;">
-                                    <img  width="100%" src="../img/users/<?php echo $alumno['Foto']; ?>" alt="">
+                                    <img  width="100%" src="<?php echo $alumno['Foto']; ?>" alt="">
                                 </div>
                                 <div class="form-group col-md-8"><br/>
                                     <input type="file" class="form-control" id="exampleInputFile" aria-describedby="fileHelp"  name="foto">

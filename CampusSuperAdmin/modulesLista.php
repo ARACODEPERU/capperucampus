@@ -267,7 +267,7 @@ include ("common/headerAcademico.php");
 
     <?php if($txtFoto!="") {   ?>
     <br/>
-    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="../img/users/<?php  echo $txtFoto; ?>  " alt="">
+    <img class="img-thumbnail rounded mx-auto d-block" width="80px"  src="<?php  echo $txtFoto; ?>  " alt="">
     <br/><br/>
 
     <?php  }  ?>

@@ -68,7 +68,7 @@
                         <section class="panel">
                             <div class="user-heading round">
                                 <a data-toggle="modal" href="#myModal1">
-                                    <img  src="../img/users/<?php echo $alumno['Foto']; ?>" >
+                                    <img  src="<?php echo $alumno['Foto']; ?>" >
                                 </a>
                                 <h1><?php  echo $alumno['Nombre']; echo " "; echo $alumno['ApellidoP']; echo " "; echo $alumno['ApellidoM']; ?></h1>
                             </div>
@@ -136,8 +136,8 @@
                                     while($row = $resultado->fetch_assoc()){ 
                                 ?>
                                 <div class="col-md-6" style="padding: 10px;">
-                                    <a href="../img/certificate/<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                                        <img  width="100%;" src="../img/certificate/<?php echo $row['Foto']; ?>"/>
+                                    <a href="<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
+                                        <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
                                     </a>
                                 </div>
                                 <?php  }  ?>
