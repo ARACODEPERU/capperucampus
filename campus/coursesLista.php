@@ -167,9 +167,11 @@
                                                                 <option>Seleccionar...</option>
                                                                 
                                                                 <?php  
-                                                                        $consulta = "SELECT p.names Nombre, u.id ID FROM model_has_roles mhr join roles r on mhr.role_id = r.id
-                                                                        join users u on u.id = mhr.model_id join people p on p.id = u.person_id
-                                                                        where r.name='Docente'";
+                                                                        $consulta = "SELECT p.names Nombre, us.id ID 
+                                                                        FROM aca_teachers tea
+                                                                        join people p on p.id = tea.person_id
+                                                                        join users us on us.person_id = p.id
+                                                                        ORDER BY us.id DESC";
                                                                         $resultado = $conexion->query($consulta);
                                                                         while($usuario= $resultado->fetch_assoc()){
                                                                 ?>

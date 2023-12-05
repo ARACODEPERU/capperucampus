@@ -206,7 +206,10 @@
                                         <i class="fa fa-group"></i>
                                     </div>
                                     <?php 
-                                        $sql = "SELECT COUNT(*) total FROM model_has_roles mhs join roles r on mhs.role_id = r.id where r.name='Docente'";
+                                        $sql = "SELECT COUNT(*) total FROM aca_teachers tea
+                                        join people p on p.id = tea.person_id
+                                        join users us on us.person_id = p.id
+                                        ORDER BY us.id DESC";
                                         $result = $conexion->query($sql);
                                         while($fila = $result->fetch_assoc()){
                                     ?>

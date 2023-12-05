@@ -118,10 +118,11 @@
                                                         <?php echo $dato['Nombre']; echo " "; echo $dato['ApellidoP']; echo " "; echo $dato['ApellidoM']; ?>
                                                     </option>
                                                     <?php
-                                                        $consulta = "SELECT DISTINCT u.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
-                                                        FROM users u JOIN people p ON p.id=u.person_id JOIN model_has_roles mhr ON u.id=mhr.model_id
-                                                        JOIN roles r ON mhr.role_id=r.id
-                                                        WHERE r.name='Docente'";
+                                                        $consulta = "SELECT DISTINCT us.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM
+                                                            FROM aca_teachers tea
+                                                            join people p on p.id = tea.person_id
+                                                            join users us on us.person_id = p.id
+                                                            ORDER BY us.id DESC";
                                                         $resultado = $conexion->query($consulta);
                                                         while($docentes = $resultado->fetch_assoc()){
                                                     ?>
