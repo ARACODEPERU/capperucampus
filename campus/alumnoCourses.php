@@ -76,7 +76,7 @@
                         <ul class="grid cs-style-3">
                             <?php
                                 $id = $_SESSION['ID'];
-                                $query = "SELECT *, c.id IDCourses, c.image FotoCourses, c.description NombreCourses, cat.description CategoriaCourses FROM aca_cap_registrations m
+                                $query = "SELECT distinct *, c.id IDCourses, c.image FotoCourses, c.description NombreCourses, cat.description CategoriaCourses FROM aca_cap_registrations m
                                     INNER JOIN aca_courses c ON m.course_id = c.id
                                     INNER JOIN aca_students student ON student.id=m.student_id
                                     INNER JOIN people pe ON pe.id = student.person_id
