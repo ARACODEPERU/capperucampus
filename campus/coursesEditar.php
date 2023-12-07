@@ -64,7 +64,10 @@
             $consulta = "SELECT *, c.id IDCourses, c.description NombreCourses, c.status Estado,
             cat.description CategoriaCourses, cat.id categoria_id, u.id ID, p.names Nombre, p.father_lastname ApellidoP, p.mother_lastname ApellidoM,
             c.course_day diaCourses, c.course_month mesCourses, c.course_year yearCourses, c.image FotoCourses
-            FROM users u JOIN people p ON p.id=u.person_id JOIN aca_teachers te ON te.person_id=p.id JOIN aca_courses c ON c.teacher_id=te.id
+            FROM users u 
+            JOIN people p ON p.id=u.person_id 
+            JOIN aca_teachers te ON te.person_id=p.id 
+            right JOIN aca_courses c ON c.teacher_id=te.id
             JOIN aca_category_courses cat ON cat.id=c.category_id WHERE c.id='$id'";
             $resultado = $conexion->query($consulta);
             while($dato = $resultado->fetch_assoc()){
