@@ -84,7 +84,7 @@
                         $id = $_REQUEST ['id'];
                         $query = "SELECT *, t.description NombreThemes, m.description NombreModules FROM aca_themes t
                         INNER JOIN aca_modules m ON t.module_id = m.id
-                        WHERE t.id ='$id' ";
+                        WHERE m.id ='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 
@@ -103,8 +103,8 @@
                               <ul class="nav nav-pills nav-stacked">
                         <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT *, c.description NombreFiles, c.content EnlaceFiles FROM aca_contents c
-                        WHERE theme_id='$id' and is_file=1 ";
+                        $query = "SELECT *, c.description NombreFiles, c.content EnlaceFiles FROM aca_contents c join aca_themes t on c.theme_id=t.id join aca_modules m on t.module_id=m.id
+                        WHERE m.id='$id' and is_file=1 ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                         ?> 
@@ -126,8 +126,8 @@
                       
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT *, c.description NombreVideos, c.content EnlaceVideos FROM aca_contents c
-                        WHERE theme_id='$id' and is_file=0 ";
+                        $query = "SELECT *, c.description NombreVideos, c.content EnlaceVideos FROM aca_contents c join aca_themes t on c.theme_id=t.id join aca_modules m on t.module_id=m.id
+                        WHERE m.id='$id' and is_file=0 ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 
