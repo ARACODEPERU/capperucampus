@@ -139,7 +139,7 @@
                                                 </div>
                                                     <div class="row" style="padding: 5px;">
                                                         <div class="col-md-12">
-                                                            <?php echo trim($row['EnlaceVideos']);?>
+                                                            <?php echo html_entity_decode(trim($row['EnlaceVideos']));?>
                                                         </div>
                                                     </div>
                             </div>
