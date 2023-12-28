@@ -85,7 +85,7 @@
                 <div class="row">
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT *, t.id IDThemes, t.description NombreThemes, module_id FROM aca_themes t WHERE module_id='$id' ";
+                        $query = "SELECT *, t.id IDThemes, t.description NombreThemes FROM aca_themes t WHERE module_id='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 
@@ -98,7 +98,7 @@
                                           <i class="fa fa-book"></i> <br/>
                                           Ingresar</a>
                                       </div>
-                                      <a href="alumnoClass.php?id=<?php echo $row['module_id'];?>">
+                                      <a href="alumnoClass.php?id=<?php echo $row['IDThemes'];?>">
                                       <div class="value" style="width: 80%;">
                                           <h2 style="text-align: left; font-size: 20px; margin: 10px; "> <?php echo $row['NombreThemes']; ?></h2>
                                       </div>
