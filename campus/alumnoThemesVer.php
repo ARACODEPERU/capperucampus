@@ -98,7 +98,7 @@
                                           <i class="fa fa-book"></i> <br/>
                                           Ingresar</a>
                                       </div>
-                                      <a href="alumnoClass.php?id=<?php echo $row['IDThemes'];?>">
+                                      <a href="alumnoClass.php?id=<?php echo $id;?>">
                                       <div class="value" style="width: 80%;">
                                           <h2 style="text-align: left; font-size: 20px; margin: 10px; "> <?php echo $row['NombreThemes']; ?></h2>
                                       </div>
