@@ -76,7 +76,7 @@
                 <div class="row">
                     <?php
                         $id = $_REQUEST ['id'];
-                        $query = "SELECT *, t.id IDThemes, t.description NombreThemes FROM aca_themes t WHERE id='$id' ";
+                        $query = "SELECT *, t.id IDThemes, t.description NombreThemes FROM aca_themes t WHERE module_id='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 

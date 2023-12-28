@@ -84,7 +84,7 @@
                         $id = $_REQUEST ['id'];
                         $query = "SELECT *, t.description NombreThemes, m.description NombreModules FROM aca_themes t
                         INNER JOIN aca_modules m ON t.module_id = m.id
-                        WHERE m.id ='$id' ";
+                        WHERE t.id ='$id' ";
                         $resultado = $conexion->query($query);
                         while($row = $resultado->fetch_assoc()){
                     ?> 
