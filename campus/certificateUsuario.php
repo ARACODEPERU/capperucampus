@@ -120,7 +120,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Imagen del certificado:</label>
-                                        <input  type="file" class="form-control" name="foto">
+                                        <input  type="file" class="form-control" name="foto" accept="image/png, image/jpg, image/jpeg">
                                     </div>
                                 </div><br/>
                                         </div>
