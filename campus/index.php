@@ -51,6 +51,7 @@
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
         <![endif]-->
+        
     </head>
 
 <body>
@@ -96,7 +97,7 @@
                                             <p style="font-size: 15px;"><?php echo $user['email']; ?></p>
                                         </div>
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li value="seleccionar"><a  data-toggle="modal" href="#" data-target="#myModal1"> <i class="fa fa-edit"></i> Editar Foto</a></li>
+                                            <li value="seleccionar"><a  data-toggle="modal" href="#myModal1"> <i class="fa fa-edit"></i> Editar Foto</a></li>
                                             <li value="seleccionar"><a  data-toggle="modal" href="#myModal2"> <i class="fa fa-edit"></i> Editar Perfil</a></li>
                                         </ul>
                                     </section>
@@ -471,7 +472,7 @@
         $resultado = $conexion->query($consulta);
         while($alumno = $resultado->fetch_assoc()){
     ?>
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade " id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="form-row">    
             <div class="modal-dialog">
                 <form  action="common/userAlumnoImg.php?id=<?php echo $alumno['ID']; ?>" method="post" enctype="multipart/form-data">
