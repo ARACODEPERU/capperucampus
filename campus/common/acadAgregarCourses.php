@@ -2,7 +2,7 @@
 include ("../conexion.php");
 
 $Estado = $_POST['Estado'];
-$Nombre = $_POST['NombreCourses'];
+$Nombre = trim($_POST['NombreCourses']);
 $Categoria = $_POST['CategoriaCourses'];
 $idDocente = $_POST['idDocente'];
 //$Foto=$_FILES['foto']["name"];

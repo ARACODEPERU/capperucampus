@@ -4,13 +4,13 @@ include ("../conexion.php");
 
 $nivel = $_POST['nivel'];
 $estado = $_POST['estado'];
-$nombres = $_POST['nombres'];
-$apellidoP = $_POST['ApellidoP'];
-$apellidoM = $_POST['ApellidoM'];
-$dni = $_POST['dni'];
+$nombres = trim($_POST['nombres']);
+$apellidoP = trim($_POST['ApellidoP']);
+$apellidoM = trim($_POST['ApellidoM']);
+$dni = trim($_POST['dni']);
 $telefono = $_POST['telefono'];
 $ocupacion= $_POST['ocupacion'];
-$email = $_POST['email'];
+$email = trim($_POST['email']);
 $departamento = $_POST['departamento'];
 $provincia = $_POST['provincia'];
 $distrito = $_POST['distrito'];
