@@ -7,6 +7,7 @@ $idCourses = $_POST['idCourses'];
 $foto=generarStringAleatorio(11);
 // Obtener la información del archivo
 $archivo = $_FILES['foto'];
+$link_pdf = '"'.$_POST['content'].'"';
 $infoArchivo = pathinfo($archivo["name"]);
 // Obtener la extensión del archivo
 $extension = $infoArchivo["extension"];
@@ -58,10 +59,19 @@ $registro_id;
         throw new Exception("Error al obtener el ID del registro en aca_cap_registrations");
     }
 
+    $$resultado;
 
-$query = "INSERT INTO aca_certificates(student_id, registration_id, image, course_id) 
-VALUES ('$student_id','$registro_id','$foto', $idCourses)";
-        $resultado = $conexion->query($query);
+    if(substr($foto, -1) === "."){
+        $query = "INSERT INTO aca_certificates(student_id, registration_id, course_id, content) 
+                    VALUES ('$student_id','$registro_id', $idCourses, $link_pdf)";
+                            $resultado = $conexion->query($query);        
+    }else{
+        $query = "INSERT INTO aca_certificates(student_id, registration_id, image, course_id, content) 
+                    VALUES ('$student_id','$registro_id','$foto', $idCourses, $link_pdf)";
+                            $resultado = $conexion->query($query);
+    }
+
+
 
 if($resultado){
     header ("Location: ../certificateUsuario.php?id=".$idUsers);

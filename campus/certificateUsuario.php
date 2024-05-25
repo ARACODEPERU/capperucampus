@@ -120,7 +120,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Imagen del certificado:</label>
-                                        <input  type="file" class="form-control" name="foto" accept="image/png, image/jpg, image/jpeg">
+                                        <input  id="foto" type="file" class="form-control" name="foto" accept="image/png, image/jpg, image/jpeg">
+                                        <label>o enlace Drive</label>
+                                        <input type="text" class="form-control" name="content" id="content">
                                     </div>
                                 </div><br/>
                                         </div>
@@ -131,7 +133,25 @@
                 </section>
             </div>
             </div>
-                
+                <script>
+                    // Seleccionar el elemento del campo de entrada de archivos
+                    const inputFile = document.getElementById('foto');
+
+                    // Seleccionar el elemento del campo de texto
+                    const contentInput = document.getElementById('content');
+
+                    // Escuchar el evento "change" en el campo de entrada de archivos
+                    inputFile.addEventListener('change', () => {
+                    // Borrar el contenido del campo de texto cuando se selecciona una imagen
+                    contentInput.value = '';
+                    });
+
+                    // Escuchar el evento "input" en el campo de texto
+                    contentInput.addEventListener('input', () => {
+                    // Borrar el contenido del campo de entrada de archivos cuando se escribe algo en el campo de texto
+                    inputFile.value = '';
+                    });
+                </script>
             
                 <div class="row">
             <div class="col-lg-12">
@@ -150,7 +170,8 @@
                                 <?php
                                 
                                 $id = $_REQUEST ['id'];
-                                $query = "SELECT  ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses
+                                $query = "SELECT  ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses,
+                                c.image imageCourses
                                 FROM users u JOIN people p ON p.id=u.person_id JOIN aca_students stu ON p.id=stu.person_id
                                 JOIN aca_certificates ce ON stu.id=ce.student_id
                                 JOIN aca_courses c ON ce.course_id=c.id join aca_category_courses cat ON cat.id=c.category_id 
@@ -159,7 +180,7 @@
                                 while($row = $resultado->fetch_assoc()){
                                     ?>
                                 <tr>
-                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['Foto']; ?>"/></td>
+                                    <td><img  width="50px;" height="50px;" src="<?php echo $row['imageCourses']; ?>"/></td>
                                     <td><?php echo $row['NombreCourses']; ?></td>
                                     <td class="hidden-phone"><?php echo $row['CategoriaCourses']; ?></td>
                                     <td>
@@ -178,7 +199,8 @@
                 <div class="row">
                 <?php
                 $id = $_REQUEST ['id'];
-                $query = "SELECT ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses
+                $query = "SELECT ce.id IDCertificate, ce.image Foto, c.description NombreCourses, cat.description CategoriaCourses, c.image imageCourses,
+                ce.content link_pdf
                 FROM users u JOIN people p ON p.id=u.person_id JOIN aca_students stu ON p.id=stu.person_id
                 JOIN aca_certificates ce ON stu.id=ce.student_id
                 JOIN aca_courses c ON ce.course_id=c.id join aca_category_courses cat ON cat.id=c.category_id 
@@ -186,9 +208,20 @@
                 $resultado = $conexion->query($query);
                 while($row = $resultado->fetch_assoc()){ ?>
                     <div class="col-md-6">
-                        <a href="<?php echo $row['Foto']; ?>" data-lightbox="mygallery" >
-                            <img  width="100%;" src="<?php echo $row['Foto']; ?>"/>
-                        </a>
+                        <!-- <a target="_blank" href="<?php echo $row['link_pdf']; ?>">
+                            <img  width="100%;" src="<?php echo $row['imageCourses']; ?>"/>
+                        </a> -->
+                        <?php
+                    if ($row['link_pdf']==null) {
+                        echo '<a target="_blank" href="' . $row['Foto'] . '">';
+                        echo '<img style="height: 260px; object-fit: cover;" src="' . $row['imageCourses'] . '"/>';
+                        echo '</a>';
+                    }else{
+                        echo '<a target="_blank" href="' . $row['link_pdf'] . '">';
+                        echo '<img style="height: 260px; object-fit: cover;" src="' . $row['imageCourses'] . '"/>';
+                        echo '</a>';
+                    }
+                    ?>                        
                     </div>
                               <!-- Modal -->
                               <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
