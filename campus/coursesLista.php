@@ -150,7 +150,6 @@
                                                         <label for="">Sector: *</label>
                                                         <select type="text" class="form-control" 
                                                                 name="CategoriaCourses">
-                                                                <option>Seleccionar...</option>
                                                                 <?php  
                                                                         $consulta = "SELECT * from aca_category_courses";
                                                                         $resultado = $conexion->query($consulta);
@@ -164,7 +163,6 @@
                                                         <label for="">Docente: *</label>
                                                         <select type="text" class="form-control" 
                                                                 name="idDocente" required>
-                                                                <option>Seleccionar...</option>
                                                                 
                                                                 <?php  
                                                                         $consulta = "SELECT p.names Nombre, us.id ID 
