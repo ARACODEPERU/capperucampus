@@ -167,7 +167,7 @@
                 ?>
                 <section class="panel">
                     <header class="panel-heading"><b style="font-weight: 700;">Lista de certificados</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://www.capperu.com/perfil-alumno/<?php echo $perfil_student['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i> Perfil del alumno</a>  
+                        <a target="_blank" href="https://www.capperu.com/perfil-alumno/<?php echo $perfil_student['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i> Perfil del alumno</a>  
                     </header>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
