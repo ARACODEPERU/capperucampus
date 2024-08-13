@@ -156,7 +156,9 @@
                 <div class="row">
             <div class="col-lg-12">
                 <section class="panel">
-                    <header class="panel-heading">Lista de certificados</header>
+                    <header class="panel-heading"><b style="font-weight: 700;">Lista de certificados</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="" class="btn btn-success"><i class="fa fa-eye"></i> Perfil del alumno</a>  
+                    </header>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
                               <tr>
