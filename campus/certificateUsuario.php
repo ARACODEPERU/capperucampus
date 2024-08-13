@@ -155,9 +155,19 @@
             
                 <div class="row">
             <div class="col-lg-12">
+                <?php
+                $id = $_REQUEST['id'];  
+
+                $consulta = "SELECT stu.id as id FROM users us 
+                             JOIN people p ON p.id = us.person_id 
+                             JOIN aca_students stu ON stu.person_id = p.id 
+                             WHERE us.id = '$id'";
+                
+                $perfil_student = $conexion->query($consulta)->fetch_assoc();
+                ?>
                 <section class="panel">
                     <header class="panel-heading"><b style="font-weight: 700;">Lista de certificados</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="" class="btn btn-success"><i class="fa fa-eye"></i> Perfil del alumno</a>  
+                        <a href="https://www.capperu.com/perfil-alumno/<?php echo $perfil_student['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i> Perfil del alumno</a>  
                     </header>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
