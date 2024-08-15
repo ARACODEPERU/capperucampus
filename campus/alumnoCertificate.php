@@ -78,9 +78,9 @@
                             <div class="row">
                                 <?php
                                     $id = $_SESSION ['ID'];
-                                    $query = "SELECT DISTINCT ce.image image , DISTINCT ce.content link_pdf, c.image imageCourses FROM users u join people p on p.id=u.person_id join aca_students stu on stu.person_id=p.id 
-                                    join aca_certificates ce on ce.student_id=stu.id join aca_cap_registrations reg on reg.student_id=stu.id
-                                    join aca_courses c ON c.id = reg.course_id 
+                                    $query = "DISTINCT ce.image image , ce.content link_pdf, c.image imageCourses FROM users u join people p on p.id=u.person_id join aca_students stu on stu.person_id=p.id 
+                                    join aca_certificates ce on ce.student_id=stu.id 
+                                    join aca_courses c ON c.id = ce.course_id 
                                             WHERE u.id='$id' ";
                                     $resultado = $conexion->query($query);
                                     while($row = $resultado->fetch_assoc()){ 
