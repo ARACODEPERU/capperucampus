@@ -78,7 +78,7 @@
                             <div class="row">
                                 <?php
                                     $id = $_SESSION ['ID'];
-                                    $query = "SELECT DISTINCT ce.image image , ce.content link_pdf, c.image imageCourses, DISTINCT c.description NombreCourses FROM users u join people p on p.id=u.person_id join aca_students stu on stu.person_id=p.id 
+                                    $query = "SELECT DISTINCT ce.image image , ce.content link_pdf, c.image imageCourses FROM users u join people p on p.id=u.person_id join aca_students stu on stu.person_id=p.id 
                                     join aca_certificates ce on ce.student_id=stu.id join aca_cap_registrations reg on reg.student_id=stu.id
                                     join aca_courses c ON c.id = reg.course_id 
                                             WHERE u.id='$id' ";
@@ -89,7 +89,7 @@
                                 if ($row['link_pdf']==null) {
                                     ?>
                                   <div class="col-md-4" style="padding: 10px;">
-                                      <a href="<?php echo $row['image']; ?>" data-lightbox="mygallery" >
+                                      <a href="<?php echo $row['image']; ?>" >
                                           <img  width="100%;" src="<?php echo $row['imageCourses']; ?>"/>
                                       </a>
                                   </div>
@@ -97,7 +97,7 @@
                                 }else{
                                 ?>
                                 <div class="col-md-4" style="padding: 10px;">
-                                      <a href="<?php echo $row['link_pdf']; ?>" data-lightbox="mygallery" >
+                                      <a href="<?php echo $row['link_pdf']; ?>" >
                                           <img  width="100%;" src="<?php echo $row['imageCourses']; ?>"/>
                                       </a>
                                   </div>
