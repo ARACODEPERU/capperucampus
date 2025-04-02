@@ -20,7 +20,7 @@
 <meta name="keyword" content="Habicom | Campus Virtual">
 <link rel="shortcut icon" type="image/x-icon" href="../img/clients/pragoticon.png">
 
-<title>Pragot | Campus Virtual</title>
+<title>Capperu | Campus Virtual</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">

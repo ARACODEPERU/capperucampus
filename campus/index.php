@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="bio-graph-heading" style="padding: 5px 0px; background-color: #054261;">
-                           <h4>Bienvenidos al Campus Virtual de <b>PRAGOT</b> </h4>
+                           <h4>Bienvenidos al Campus Virtual de <b>CAPPERU</b> </h4>
                         </div>
                     </div>
                 </div>
