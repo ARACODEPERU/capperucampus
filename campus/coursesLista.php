@@ -103,7 +103,7 @@
                                 while($courses = $resultado->fetch_assoc()){
                             ?>
                                 <tr>
-                                    <td><img  width="70px;" height="50px;" src="<?php echo $courses['FotoCourses']; ?>"/></td>
+                                    <td><img  width="170px;" height="50px;" src="<?php echo $courses['FotoCourses']; ?>"/></td>
                                     <td>
                                         <?php echo $courses['NombreCourses']; ?> <br/>
                                         <span class="label label-success label-mini"><?php  if ($courses['Estado'])echo "Activo"; ?></span>
